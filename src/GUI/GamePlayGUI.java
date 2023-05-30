@@ -19,7 +19,7 @@ public class GamePlayGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1440, 1080);
         setLocationRelativeTo(null);
-        setResizable(true);
+        setResizable(false);
 
         // Set Minimum Size
         setMinimumSize(new Dimension(minWidth, minHeight));
@@ -33,25 +33,9 @@ public class GamePlayGUI extends JFrame {
         // Character
         ImageIcon characterImage = new ImageIcon("src/assets/characters/heho1.png");
         characterLabel = new JLabel(characterImage);
-        characterLabel.setBounds(0, 0, minWidth, minHeight);
+        characterLabel.setBounds(400, 400, 40, 40);
         backgroundLabel.add(characterLabel);
 
-        // Add component listener for resize events
-        addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                updateCharacterPosition();
-            }
-        });
-
         setVisible(true);
-    }
-
-    // Update character position based on window size
-    private void updateCharacterPosition() {
-        Dimension screenSize = backgroundLabel.getSize();
-        int centerX = screenSize.width / 2 - characterLabel.getWidth() / 2;
-        int centerY = screenSize.height / 2 - characterLabel.getHeight() / 2;
-        characterLabel.setLocation(centerX, centerY);
     }
 }
