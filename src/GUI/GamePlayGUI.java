@@ -9,6 +9,8 @@ public class GamePlayGUI extends JFrame {
     int minWidth = 800;
     int minHeight = 800;
 
+    private JLabel characterLabel;
+
     // Constructor
     public GamePlayGUI(){
         setTitle("Lousy Fencing");
@@ -26,7 +28,11 @@ public class GamePlayGUI extends JFrame {
         backgroundLabel.setBounds(0, 0, minWidth, minHeight);
         add(backgroundLabel); // Menempel background
 
-
+        // Character
+        ImageIcon characterImage = new ImageIcon("src/assets/characters/H2-Heho Letter Logo.png");
+        characterLabel = new JLabel();
+        characterLabel.setBounds(400, 400, 40, 40);
+        backgroundLabel.add(characterLabel);
 
 
         setVisible(true);
