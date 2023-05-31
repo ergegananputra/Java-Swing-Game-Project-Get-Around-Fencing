@@ -1,9 +1,9 @@
 package models;
 
-public class Chicken extends Player{
+public class Sheep extends Player{
     public static final String OUTFIT = "src/assets/characters/Chicken.png";
 
-    public Chicken() {
+    public Sheep() {
         super(OUTFIT);
     }
 }
