@@ -20,7 +20,12 @@ public class Soup extends Coordinate{
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(!name.isEmpty()){
+            this.name = name;
+        }
+        else {
+            this.name = "No Name";
+        }
     }
 
     public int getEffect() {
