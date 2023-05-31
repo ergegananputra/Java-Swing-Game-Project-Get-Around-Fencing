@@ -17,7 +17,7 @@ public class GamePlayGUI extends JFrame {
     public GamePlayGUI() {
         setTitle("Lousy Fencing");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1440, 1080);
+        setSize(FrameInfo.frameWidth, FrameInfo.frameHeight);
         setLocationRelativeTo(null);
         setResizable(false);
 
@@ -31,9 +31,9 @@ public class GamePlayGUI extends JFrame {
         add(backgroundLabel); // Attach background
 
         // Character
-        ImageIcon characterImage = new ImageIcon("src/assets/characters/heho1.png");
+        ImageIcon characterImage = new ImageIcon("src/assets/characters/Creeper.png");
         characterLabel = new JLabel(characterImage);
-        characterLabel.setBounds(400, 400, 40, 40);
+        characterLabel.setBounds(400, 400, FrameInfo.tileSize, FrameInfo.tileSize);
         backgroundLabel.add(characterLabel);
 
         setVisible(true);
