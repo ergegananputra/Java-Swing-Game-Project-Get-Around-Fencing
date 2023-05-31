@@ -18,22 +18,31 @@ public abstract class Player extends Coordinate implements IMoveable{
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(!name.isEmpty()){
+            this.name = name;
+        }
+        else {
+            this.name = "No Name";
+        }
     }
 
     public String getOutfit() {
         return outfit;
     }
 
-    public void setOutfit(String outfit) {
-        this.outfit = outfit;
-    }
-
     public int getTurns() {
         return turns;
     }
 
-    public void setTurns(int turns) {
-        this.turns = turns;
+    public void decreaseTurns(int turns) {
+        if(turns > 0){
+            this.turns -= turns;
+        }
+    }
+
+    public void addTurns(int turns) {
+        if(turns > 0){
+            this.turns += turns;
+        }
     }
 }
