@@ -1,4 +1,6 @@
 package models;
+import GUI.FrameInfo;
+
 import javax.swing.*;
 
 public abstract class Player extends Coordinate implements IMoveable{
@@ -41,5 +43,9 @@ public abstract class Player extends Coordinate implements IMoveable{
         if(turns > 0){
             this.turns += turns;
         }
+    }
+
+    public void setInitialPosition(int x, int y){
+        character.setBounds(x, y, FrameInfo.tileSize, FrameInfo.tileSize);
     }
 }
