@@ -1,9 +1,11 @@
 package models;
 
+import GUI.FrameInfo;
+
 public abstract class Coordinate {
     //Attributes
     private int coordinateX;
-    private int CoordinateY;
+    private int coordinateY;
 
     //Getter Setter
     public int getCoordinateX() {
@@ -15,10 +17,34 @@ public abstract class Coordinate {
     }
 
     public int getCoordinateY() {
-        return CoordinateY;
+        return coordinateY;
     }
 
     public void setCoordinateY(int coordinateY) {
-        CoordinateY = coordinateY;
+        this.coordinateY = coordinateY;
+    }
+
+    public void incrementX(int value){
+        if (value > 0 && coordinateX + value <= FrameInfo.arenaXend){
+            coordinateX += value;
+        }
+    }
+
+    public void incrementY(int value){
+        if (value > 0  && coordinateY + value <= FrameInfo.arenaYend){
+            coordinateY += value;
+        }
+    }
+
+    public void decrementtX(int value){
+        if (value > 0  && coordinateX - value >= FrameInfo.arenaXstart){
+            coordinateX -= value;
+        }
+    }
+
+    public void decrementY(int value){
+        if (value > 0 && coordinateY - value >= FrameInfo.arenaYstart){
+            coordinateY -= value;
+        }
     }
 }

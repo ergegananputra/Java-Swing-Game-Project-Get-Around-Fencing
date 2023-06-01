@@ -47,5 +47,10 @@ public abstract class Player extends Coordinate implements IMoveable{
 
     public void setInitialPosition(int x, int y){
         character.setBounds(x, y, FrameInfo.tileSize, FrameInfo.tileSize);
+        updateLocation();
+    }
+
+    public void updateLocation(){
+        character.setLocation(getCoordinateX(), getCoordinateY());
     }
 }
