@@ -1,17 +1,10 @@
 package GUI;
-
 import models.Spider;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class GamePlayGUI extends JFrame {
     // Attributes
     private JLabel backgroundLabel;
-
-    private JLabel characterLabel;
 
     // Constructor
     public GamePlayGUI() {
@@ -22,7 +15,7 @@ public class GamePlayGUI extends JFrame {
         setResizable(false);
 
         // Initialize Background Label
-        ImageIcon backgroundImage = new ImageIcon("src/assets/placeholder.png");
+        ImageIcon backgroundImage = new ImageIcon(FrameInfo.background);
         backgroundLabel = new JLabel(backgroundImage);
         backgroundLabel.setBounds(0, 0, FrameInfo.frameWidth, FrameInfo.frameHeight);
         add(backgroundLabel); // Attach background
