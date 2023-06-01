@@ -1,15 +1,16 @@
 package models;
+import javax.swing.*;
 
 public abstract class Player extends Coordinate implements IMoveable{
 
     //Attributes
     private String name;
-    private String outfit;
     private int turns;
+    public final JLabel character;
 
     //Constructor
     public Player(String outfit){
-        this.outfit = outfit;
+        this.character = new JLabel(new ImageIcon(outfit));
     }
 
     //Getter Setter
@@ -24,10 +25,6 @@ public abstract class Player extends Coordinate implements IMoveable{
         else {
             this.name = "No Name";
         }
-    }
-
-    public String getOutfit() {
-        return outfit;
     }
 
     public int getTurns() {
