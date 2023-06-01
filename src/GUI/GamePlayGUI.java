@@ -1,6 +1,7 @@
 package GUI;
 import models.Spider;
 import javax.swing.*;
+import java.awt.*;
 
 public class GamePlayGUI extends JFrame {
     // Attributes
@@ -17,8 +18,10 @@ public class GamePlayGUI extends JFrame {
         setResizable(false);
 
         // Initialize Background Label
-        ImageIcon backgroundImage = new ImageIcon(FrameInfo.background);
-        backgroundLabel = new JLabel(backgroundImage);
+        ImageIcon backgroundImageOriginal = new ImageIcon(FrameInfo.background);
+        Image backgroundImage = backgroundImageOriginal.getImage();
+        Image scaledImage = backgroundImage.getScaledInstance(FrameInfo.frameWidth, FrameInfo.frameHeight, Image.SCALE_SMOOTH);
+        backgroundLabel = new JLabel(new ImageIcon(scaledImage));
         backgroundLabel.setBounds(0, 0, FrameInfo.frameWidth, FrameInfo.frameHeight);
         add(backgroundLabel); // Attach background
 
