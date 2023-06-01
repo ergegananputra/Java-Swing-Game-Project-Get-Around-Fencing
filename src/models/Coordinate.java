@@ -25,13 +25,13 @@ public abstract class Coordinate {
     }
 
     public void incrementX(int value){
-        if (value > 0 && coordinateX + value <= FrameInfo.arenaXend){
+        if (value > 0 && coordinateX + value < FrameInfo.arenaXend){
             coordinateX += value;
         }
     }
 
     public void incrementY(int value){
-        if (value > 0  && coordinateY + value <= FrameInfo.arenaYend){
+        if (value > 0  && coordinateY + value < FrameInfo.arenaYend){
             coordinateY += value;
         }
     }

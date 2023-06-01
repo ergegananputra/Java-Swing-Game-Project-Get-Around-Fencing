@@ -20,14 +20,15 @@ public class FrameInfo {
     public static int arenaSize = userScreenSetting > 1? 800 : 600;
 
     public static int arenaXstart = frameWidth/2 - arenaSize/2;
-    public static int arenaXend = frameWidth/2 + arenaSize/2 - tileSize;
+    public static int arenaXend = frameWidth/2 + arenaSize/2;
     public static int arenaYstart = frameHeight/2 - arenaSize/2;
-    public static int arenaYend = frameHeight/2 + arenaSize/2 - tileSize;
+    public static int arenaYend = frameHeight/2 + arenaSize/2;
 
     // setter
     public static void setUserScreenSetting(int preset){
         if (preset>=0 && preset<4){
             FrameInfo.userScreenSetting = preset;
+            refresh();
         }
     }
 
