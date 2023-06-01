@@ -10,18 +10,18 @@ public class FrameInfo {
             "src/assets/placeholder_FHD.png",
             "src/assets/placeholder_FHD_Wide.png"
     };
-    public static final String background = backgrounds[userScreenSetting];
+    public static String background = backgrounds[userScreenSetting];
 
 
-    public static final int frameWidth = screens[userScreenSetting][0];
-    public static final int frameHeight = screens[userScreenSetting][1];
-    public static final int tileSize = userScreenSetting > 1? 40 : 30;
-    public static final int arenaSize = userScreenSetting > 1? 800 : 600;
+    public static int frameWidth = screens[userScreenSetting][0];
+    public static int frameHeight = screens[userScreenSetting][1];
+    public static int tileSize = userScreenSetting > 1? 40 : 30;
+    public static int arenaSize = userScreenSetting > 1? 800 : 600;
 
-    public static final int arenaXstart = frameWidth/2 - arenaSize/2;
-    public static final int arenaXend = frameWidth/2 + arenaSize/2;
-    public static final int arenaYstart = frameHeight/2 - arenaSize/2;
-    public static final int arenaYend = frameHeight/2 + arenaSize/2;
+    public static int arenaXstart = frameWidth/2 - arenaSize/2;
+    public static int arenaXend = frameWidth/2 + arenaSize/2;
+    public static int arenaYstart = frameHeight/2 - arenaSize/2;
+    public static int arenaYend = frameHeight/2 + arenaSize/2;
 
     // setter
     public static void setUserScreenSetting(int preset){

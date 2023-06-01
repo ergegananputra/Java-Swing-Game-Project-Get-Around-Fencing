@@ -7,7 +7,8 @@ public class GamePlayGUI extends JFrame {
     private JLabel backgroundLabel;
 
     // Constructor
-    public GamePlayGUI() {
+    public GamePlayGUI(int preset) {
+        FrameInfo.setUserScreenSetting(preset);
         setTitle("Lousy Fencing");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(FrameInfo.frameWidth, FrameInfo.frameHeight);
@@ -24,7 +25,6 @@ public class GamePlayGUI extends JFrame {
         Spider player1 = new Spider();
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
         backgroundLabel.add(player1.character);
-
 
         setVisible(true);
     }
