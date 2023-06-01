@@ -9,6 +9,7 @@ public class GamePlayGUI extends JFrame {
     // Constructor
     public GamePlayGUI(int preset) {
         FrameInfo.setUserScreenSetting(preset);
+        FrameInfo.refresh();
         setTitle("Lousy Fencing");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(FrameInfo.frameWidth, FrameInfo.frameHeight);
