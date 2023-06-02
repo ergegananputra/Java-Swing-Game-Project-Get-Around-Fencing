@@ -1,19 +1,21 @@
 package GUI;
-import models.Player;
 import models.Spider;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.logging.*;
 
 public class GamePlayGUI extends JFrame {
+    // Developer Atributes
     private static final Logger LOGGER = Logger.getLogger(GamePlayGUI.class.getName());
+
+
     // Attributes
     private JLabel backgroundLabel;
 
     // Constructor
     public GamePlayGUI(int preset, boolean degbugMode) {
+        // Set User Screen Setting Preference
         FrameInfo.setUserScreenSetting(preset);
         FrameInfo.refresh();
 
@@ -23,21 +25,13 @@ public class GamePlayGUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-//        // Initialize Background Label
-//        ImageIcon backgroundImageOriginal = new ImageIcon(FrameInfo.background);
-//        Image backgroundImage = backgroundImageOriginal.getImage();
-//        Image scaledImage = backgroundImage.getScaledInstance(FrameInfo.frameWidth, FrameInfo.frameHeight, Image.SCALE_SMOOTH);
-//        backgroundLabel = new JLabel(new ImageIcon(scaledImage));
-//        backgroundLabel.setBounds(0, 0, FrameInfo.frameWidth, FrameInfo.frameHeight);
-//        add(backgroundLabel); // Attach background
-
         // Create the main content panel with a BorderLayout
         JPanel contentPane = new JPanel(new BorderLayout());
         contentPane.setBackground(Color.BLACK); // Set the background color of the content pane
 
         // Create a nested panel for background image with a BorderLayout
         JPanel backgroundPanel = new JPanel(new BorderLayout());
-        backgroundPanel.setBackground(Color.BLACK); // Set the background color of the background panel
+        backgroundPanel.setBackground(Color.BLACK);
 
         // Initialize Background Label
         ImageIcon backgroundImage = new ImageIcon(FrameInfo.background);

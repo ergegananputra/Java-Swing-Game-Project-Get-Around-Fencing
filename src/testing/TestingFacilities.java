@@ -1,4 +1,4 @@
-package lab;
+package testing;
 
 import GUI.FrameInfo;
 

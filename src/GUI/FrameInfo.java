@@ -4,10 +4,10 @@ public class FrameInfo {
     // index                                     0           1           2           3
     private static final int[][] screens = {{1000,750}, {1366,768}, {1440,1080}, {1920,1080}} ;
     private static final String[] backgrounds = {
-            "src/assets/placeholder_HD.png",
-            "src/assets/placeholder_HD_Wide.png",
-            "src/assets/placeholder_FHD.png",
-            "src/assets/placeholder_FHD_Wide.png"
+            "src/assets/background/placeholder_HD.png",
+            "src/assets/background/placeholder_HD_Wide.png",
+            "src/assets/background/placeholder_FHD.png",
+            "src/assets/background/placeholder_FHD_Wide.png"
     };
 
     private static int userScreenSetting;
