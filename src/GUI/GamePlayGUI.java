@@ -1,5 +1,6 @@
 package GUI;
 import information.FrameInfo;
+import models.Map1;
 import models.Spider;
 import javax.swing.*;
 import java.awt.*;
@@ -47,10 +48,23 @@ public class GamePlayGUI extends JFrame {
         // Set the main content panel as the content pane of the frame
         setContentPane(contentPane);
 
+        //TODO: ini Map dan Character masih temporary
+
         // Character
         Spider player1 = new Spider();
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
         backgroundLabel.add(player1.character);
+
+        Spider player2 = new Spider();
+        player2.setInitialPosition(FrameInfo.arenaXend,FrameInfo.arenaYend);
+        backgroundLabel.add(player2.character);
+
+        // Create Map
+        Map1 demoMap = new Map1("Demo Map");
+        demoMap.addPlayers(player1);
+        demoMap.addPlayers(player2);
+
+
 
         // Add Event Listener
         addKeyListener(new KeyListener() {

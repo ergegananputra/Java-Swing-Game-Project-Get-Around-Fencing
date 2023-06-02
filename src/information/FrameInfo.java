@@ -45,11 +45,14 @@ public class FrameInfo {
     }
 
     private static int getTileSize(){
-        return userScreenSetting > 1? 40 : 30;
+        return userScreenSetting > 1? 50 : 50;
     }
 
     private static int getArenaSize(){
         return userScreenSetting > 1? 800 : 600;
     }
 
+    public static int getUserScreenSetting() {
+        return userScreenSetting;
+    }
 }

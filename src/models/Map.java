@@ -1,15 +1,22 @@
 package models;
 
+import information.FrameInfo;
+
 import java.util.ArrayList;
 
 public abstract class Map {
     //Atrributes
     private String name;
-    private int arenaWidth;
-    private int arena;
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Soup> soups;
     protected ArrayList<Player> players;
+
+    // Constructor
+    public Map(String mapName){
+        obstacles = new ArrayList<>();
+        soups = new ArrayList<>();
+        players = new ArrayList<>();
+    }
 
     //Getter Setter
     public String getName() {
@@ -25,21 +32,7 @@ public abstract class Map {
         }
     }
 
-    public int getArenaWidth() {
-        return arenaWidth;
-    }
 
-    public void setArenaWidth(int arenaWidth) {
-        this.arenaWidth = arenaWidth;
-    }
-
-    public int getArena() {
-        return arena;
-    }
-
-    public void setArena(int arena) {
-        this.arena = arena;
-    }
 
     public ArrayList<Obstacle> getObstacles() {
         return obstacles;
@@ -61,8 +54,8 @@ public abstract class Map {
         return players;
     }
 
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void addPlayers(Player player) {
+        players.add(player);
     }
 
     public void addObstacles(Obstacle obstacle){
@@ -85,5 +78,13 @@ public abstract class Map {
     public Player nextPlayer(){
         //TODO: Belum jadi
         return new Spider();
+    }
+
+    public int getTilesRelativeCoorX(int tileIndex){
+        return tileIndex * FrameInfo.tileSize + FrameInfo.arenaXstart;
+    }
+
+    public int getTilesRelativeCoorY(int tileIndex){
+        return tileIndex * FrameInfo.tileSize + FrameInfo.arenaXstart;
     }
 }
