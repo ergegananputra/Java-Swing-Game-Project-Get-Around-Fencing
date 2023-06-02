@@ -1,6 +1,6 @@
 package models;
 
-import GUI.FrameInfo;
+import information.FrameInfo;
 
 public abstract class Coordinate {
     //Attributes

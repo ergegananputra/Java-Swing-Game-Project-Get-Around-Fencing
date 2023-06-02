@@ -1,6 +1,6 @@
 package testing;
 
-import GUI.FrameInfo;
+import information.FrameInfo;
 
 public class TestingFacilities {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package GUI;
+package information;
 
 public class FrameInfo {
     // index                                     0           1           2           3

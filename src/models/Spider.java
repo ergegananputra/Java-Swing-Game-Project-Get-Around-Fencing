@@ -1,6 +1,6 @@
 package models;
 
-import GUI.FrameInfo;
+import information.FrameInfo;
 
 public class Spider extends Player{
     public static final String OUTFIT = "src/assets/characters/Spider.png";

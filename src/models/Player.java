@@ -1,5 +1,5 @@
 package models;
-import GUI.FrameInfo;
+import information.FrameInfo;
 
 import javax.swing.*;
 

@@ -1,4 +1,5 @@
 package GUI;
+import information.FrameInfo;
 import models.Spider;
 import javax.swing.*;
 import java.awt.*;
