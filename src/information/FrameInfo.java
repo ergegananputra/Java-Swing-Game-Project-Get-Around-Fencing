@@ -16,8 +16,8 @@ public class FrameInfo {
 
     public static int frameWidth = screens[userScreenSetting][0];
     public static int frameHeight = screens[userScreenSetting][1];
-    public static int tileSize = userScreenSetting > 1? 40 : 30;
-    public static int arenaSize = userScreenSetting > 1? 800 : 600;
+    public static int tileSize = getTileSize();
+    public static int arenaSize = getArenaSize();
 
     public static int arenaXstart = frameWidth/2 - arenaSize/2;
     public static int arenaXend = frameWidth/2 + arenaSize/2;
@@ -36,12 +36,20 @@ public class FrameInfo {
         background = backgrounds[userScreenSetting];
         frameWidth = screens[userScreenSetting][0];
         frameHeight = screens[userScreenSetting][1];
-        tileSize = userScreenSetting > 1? 40 : 30;
-        arenaSize = userScreenSetting > 1? 800 : 600;
+        tileSize = getTileSize();
+        arenaSize = getArenaSize();
         arenaXstart = frameWidth/2 - arenaSize/2;
         arenaXend = frameWidth/2 + arenaSize/2;
         arenaYstart = frameHeight/2 - arenaSize/2;
         arenaYend = frameHeight/2 + arenaSize/2;
+    }
+
+    private static int getTileSize(){
+        return userScreenSetting > 1? 40 : 30;
+    }
+
+    private static int getArenaSize(){
+        return userScreenSetting > 1? 800 : 600;
     }
 
 }
