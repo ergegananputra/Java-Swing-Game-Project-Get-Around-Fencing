@@ -6,4 +6,9 @@ public class Map2 extends Map{
         super(name);
     }
 
+    @Override
+    protected void initializeObstacle() {
+        // TODO: add obstacles
+    }
+
 }

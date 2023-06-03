@@ -1,5 +1,7 @@
 package GUI;
+import core.Engine;
 import information.FrameInfo;
+import information.GameInfo;
 import models.Map1;
 import models.Spider;
 import javax.swing.*;
@@ -51,20 +53,29 @@ public class GamePlayGUI extends JFrame {
         //TODO: ini Map dan Character masih temporary
 
         // Character
-        Spider player1 = new Spider();
+        Spider player1 = new Spider("Player 1");
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
         backgroundLabel.add(player1.character);
 
-        Spider player2 = new Spider();
-        player2.setInitialPosition(FrameInfo.arenaXend,FrameInfo.arenaYend);
+        Spider player2 = new Spider("Player 2");
+        player2.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
         backgroundLabel.add(player2.character);
 
         // Create Map
         Map1 demoMap = new Map1("Demo Map");
-        demoMap.addPlayers(player1);
-        demoMap.addPlayers(player2);
+        demoMap.addPlayers(player1, player2);
 
 
+        /**
+         * Dilarang keras untuk merubah sourcode dibawah ini tanpa izin/diskusi
+         *
+         * DAERAH SENSITIF
+         */
+
+        //WARNING: No Edit Zone -- Start
+
+        Engine core = new Engine();
+        core.setMap(demoMap);
 
         // Add Event Listener
         addKeyListener(new KeyListener() {
@@ -77,15 +88,87 @@ public class GamePlayGUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
                 switch (keyCode) {
-                    case KeyEvent.VK_UP -> player1.goUp();
-                    case KeyEvent.VK_DOWN -> player1.goDown();
-                    case KeyEvent.VK_LEFT -> player1.goLeft();
-                    case KeyEvent.VK_RIGHT -> player1.goRight();
-                    default -> {}
+                    // Player 1
+                    case KeyEvent.VK_UP -> {
+                        if (GameInfo.playerTurn == 1){
+                            core.getPlayer1().goUp();
+                            core.getPlayer1().decreaseTurns(1);
+                        }
+                    }
+                    case KeyEvent.VK_DOWN -> {
+                        if (GameInfo.playerTurn == 1) {
+                            core.getPlayer1().goDown();
+                            core.getPlayer1().decreaseTurns(1);
+                        }
+                    }
+                    case KeyEvent.VK_LEFT -> {
+                        if (GameInfo.playerTurn == 1) {
+                            core.getPlayer1().goLeft();
+                            core.getPlayer1().decreaseTurns(1);
+                        }
+                    }
+                    case KeyEvent.VK_RIGHT -> {
+                        if (GameInfo.playerTurn == 1) {
+                            core.getPlayer1().goRight();
+                            core.getPlayer1().decreaseTurns(1);
+                        }
+                    }
+                    // Player 2
+                    case KeyEvent.VK_W -> {
+                        if (GameInfo.playerTurn == 2){
+                            core.getPlayer2().goUp();
+                            core.getPlayer2().decreaseTurns(1);
+                        }
+                    }
+                    case KeyEvent.VK_S -> {
+                        if (GameInfo.playerTurn == 2) {
+                            core.getPlayer2().goDown();
+                            core.getPlayer2().decreaseTurns(1);
+                        }
+                    }
+                    case KeyEvent.VK_A -> {
+                        if (GameInfo.playerTurn == 2) {
+                            core.getPlayer2().goLeft();
+                            core.getPlayer2().decreaseTurns(1);
+                        }
+                    }
+                    case KeyEvent.VK_D -> {
+                        if (GameInfo.playerTurn == 2) {
+                            core.getPlayer2().goRight();
+                            core.getPlayer2().decreaseTurns(1);
+                        }
+                    }
+
+                    default -> {
+                    }
                 }
-                player1.updateLocation();
+
+                core.getPlayer1().updateLocation();
+                core.getPlayer2().updateLocation();
+
+                // Next Turn
+                if (core.getPlayer1().getTurns() <= 0 || core.getPlayer2().getTurns() <= 0){
+                    GameInfo.moves++;
+                    if (!GameInfo.isGameEnd) {
+                        if (GameInfo.playerTurn == 2) {
+                            GameInfo.playerTurn = 1;
+                            core.getPlayer1().setTurns(core.getPlayer1().getDefault_turns());
+                        } else if (GameInfo.playerTurn == 1) {
+                            GameInfo.playerTurn = 2;
+                            core.getPlayer2().setTurns(core.getPlayer2().getDefault_turns());
+                        }
+                    } else {
+                        GameInfo.playerTurn = 0;
+                    }
+                }
+
+
                 if (degbugMode){
-                    LOGGER.info(player1.character.getLocation().toString());
+                    if (GameInfo.playerTurn == 1){
+                        LOGGER.info(core.getPlayer1().character.getLocation().toString());
+                    } else if (GameInfo.playerTurn == 2){
+                        LOGGER.info(core.getPlayer2().character.getLocation().toString());
+                    }
                 }
 
             }
@@ -95,6 +178,9 @@ public class GamePlayGUI extends JFrame {
 
             }
         });
+
+
+        //WARNING: No Edit Zone -- End
 
         setVisible(true);
     }

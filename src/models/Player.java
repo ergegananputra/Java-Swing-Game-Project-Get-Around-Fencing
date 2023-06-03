@@ -7,7 +7,8 @@ public abstract class Player extends Coordinate implements IMoveable{
 
     //Attributes
     private String name;
-    private int turns;
+    private int turns = 1;
+    private int default_turns = turns;
     public final JLabel character;
 
     //Constructor
@@ -38,11 +39,21 @@ public abstract class Player extends Coordinate implements IMoveable{
             this.turns -= turns;
         }
     }
+    public void setTurns(int turns){
+        if(turns > 0){
+            this.turns = turns;
+        }
+    }
 
     public void addTurns(int turns) {
         if(turns > 0){
             this.turns += turns;
+            default_turns = this.turns;
         }
+    }
+
+    public int getDefault_turns(){
+        return default_turns;
     }
 
     public void setInitialPosition(int x, int y){

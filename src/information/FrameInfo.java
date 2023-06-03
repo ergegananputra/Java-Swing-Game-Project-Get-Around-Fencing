@@ -40,16 +40,16 @@ public class FrameInfo {
         arenaSize = getArenaSize();
         arenaXstart = frameWidth/2 - arenaSize/2;
         arenaXend = frameWidth/2 + arenaSize/2;
-        arenaYstart = frameHeight/2 - arenaSize/2;
+        arenaYstart = frameHeight/2 - arenaSize/2 ;
         arenaYend = frameHeight/2 + arenaSize/2;
     }
 
     private static int getTileSize(){
-        return userScreenSetting > 1? 50 : 50;
+        return userScreenSetting > 1? 70 : 50;
     }
 
     private static int getArenaSize(){
-        return userScreenSetting > 1? 800 : 600;
+        return userScreenSetting > 1? 840 : 600;
     }
 
     public static int getUserScreenSetting() {

@@ -9,7 +9,7 @@ public class Map1 extends Map{
         initializeObstacle();
     }
 
-    private void initializeObstacle(){
+    protected final void initializeObstacle(){
         if (FrameInfo.getUserScreenSetting() > 1) {
             // Top
             addObstacles(new Obstacle(getTilesRelativeCoorX(5), getTilesRelativeCoorY(3)));

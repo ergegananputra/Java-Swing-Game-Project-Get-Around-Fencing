@@ -1,29 +1,12 @@
 package models;
 
-public class Pig extends Player{
+public class Pig extends PlayerPhysic{
     public static final String OUTFIT = "src/assets/characters/Pig.png";
 
-    public Pig() {
+    public Pig(String name) {
         super(OUTFIT);
+        setName(name);
     }
 
-    @Override
-    public void goUp() {
-        //TODO: naik
-    }
 
-    @Override
-    public void goDown() {
-        //TODO: turun
-    }
-
-    @Override
-    public void goLeft() {
-        //TODO: kiri
-    }
-
-    @Override
-    public void goRight() {
-        //TODO: kanan
-    }
 }
