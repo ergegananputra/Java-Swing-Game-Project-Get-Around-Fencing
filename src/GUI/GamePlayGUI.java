@@ -80,93 +80,74 @@ public class GamePlayGUI extends JFrame {
         // Add Event Listener
         addKeyListener(new KeyListener() {
             @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
+            public void keyTyped(KeyEvent e) {}
 
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
-                switch (keyCode) {
-                    // Player 1
-                    case KeyEvent.VK_UP -> {
-                        if (GameInfo.playerTurn == 1){
+                if (core.getNowPlaying() == 1 && !GameInfo.isGameEnd) {
+
+                    switch (keyCode){
+                        case KeyEvent.VK_UP -> {
                             core.getPlayer1().goUp();
                             core.getPlayer1().decreaseTurns(1);
                         }
-                    }
-                    case KeyEvent.VK_DOWN -> {
-                        if (GameInfo.playerTurn == 1) {
+                        case KeyEvent.VK_DOWN -> {
                             core.getPlayer1().goDown();
                             core.getPlayer1().decreaseTurns(1);
                         }
-                    }
-                    case KeyEvent.VK_LEFT -> {
-                        if (GameInfo.playerTurn == 1) {
+                        case KeyEvent.VK_LEFT -> {
                             core.getPlayer1().goLeft();
                             core.getPlayer1().decreaseTurns(1);
                         }
-                    }
-                    case KeyEvent.VK_RIGHT -> {
-                        if (GameInfo.playerTurn == 1) {
+                        case KeyEvent.VK_RIGHT -> {
                             core.getPlayer1().goRight();
                             core.getPlayer1().decreaseTurns(1);
                         }
+                        default -> {}
                     }
-                    // Player 2
-                    case KeyEvent.VK_W -> {
-                        if (GameInfo.playerTurn == 2){
+
+                    core.getPlayer1().updateLocation();
+                    core.nextNowPlaying();
+
+
+                } else if (core.getNowPlaying() == 2 && !GameInfo.isGameEnd) {
+
+                    switch (keyCode){
+                        case KeyEvent.VK_W -> {
                             core.getPlayer2().goUp();
                             core.getPlayer2().decreaseTurns(1);
                         }
-                    }
-                    case KeyEvent.VK_S -> {
-                        if (GameInfo.playerTurn == 2) {
+                        case KeyEvent.VK_S -> {
                             core.getPlayer2().goDown();
                             core.getPlayer2().decreaseTurns(1);
                         }
-                    }
-                    case KeyEvent.VK_A -> {
-                        if (GameInfo.playerTurn == 2) {
+                        case KeyEvent.VK_A -> {
                             core.getPlayer2().goLeft();
                             core.getPlayer2().decreaseTurns(1);
                         }
-                    }
-                    case KeyEvent.VK_D -> {
-                        if (GameInfo.playerTurn == 2) {
+                        case KeyEvent.VK_D -> {
                             core.getPlayer2().goRight();
                             core.getPlayer2().decreaseTurns(1);
                         }
+                        default -> {}
                     }
+                    core.getPlayer2().updateLocation();
+                    core.nextNowPlaying();
 
-                    default -> {
-                    }
+                } else {
+
                 }
 
-                core.getPlayer1().updateLocation();
-                core.getPlayer2().updateLocation();
 
-                // Next Turn
-                if (core.getPlayer1().getTurns() <= 0 || core.getPlayer2().getTurns() <= 0){
-                    GameInfo.moves++;
-                    if (!GameInfo.isGameEnd) {
-                        if (GameInfo.playerTurn == 2) {
-                            GameInfo.playerTurn = 1;
-                            core.getPlayer1().setTurns(core.getPlayer1().getDefault_turns());
-                        } else if (GameInfo.playerTurn == 1) {
-                            GameInfo.playerTurn = 2;
-                            core.getPlayer2().setTurns(core.getPlayer2().getDefault_turns());
-                        }
-                    } else {
-                        GameInfo.playerTurn = 0;
-                    }
-                }
+                // Developer logic
 
 
                 if (degbugMode){
-                    if (GameInfo.playerTurn == 1){
+                    LOGGER.info("Sekarang giliran : " + core.getNowPlaying() + ", Turns [ " + core.getPlayer1().getTurns() + " , " + core.getPlayer2().getTurns() + " ]");
+                    if (core.getNowPlaying()== 1){
                         LOGGER.info(core.getPlayer1().character.getLocation().toString());
-                    } else if (GameInfo.playerTurn == 2){
+                    } else if (core.getNowPlaying() == 2){
                         LOGGER.info(core.getPlayer2().character.getLocation().toString());
                     }
                 }
@@ -174,9 +155,8 @@ public class GamePlayGUI extends JFrame {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {}
 
-            }
         });
 
 

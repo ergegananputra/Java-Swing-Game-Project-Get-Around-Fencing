@@ -17,7 +17,33 @@ public class Engine {
 
     // Atributes
     public Map map;
+    private int nowPlaying = 1; // start from 1
 
+    // Getter n Setter
+
+    // now Playing
+
+
+    public int getNowPlaying() {
+        return nowPlaying;
+    }
+
+    public void nextNowPlaying(){
+        if (getPlayer1().getTurns() <= 0 || getPlayer2().getTurns() <= 0){
+            GameInfo.moves++;
+            if (!GameInfo.isGameEnd) {
+                if (nowPlaying == 2 && getPlayer2().getTurns() <= 0) {
+                    nowPlaying = 1;
+                    getPlayer1().setTurns(getPlayer1().getDefault_turns());
+                } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
+                   nowPlaying = 2;
+                    getPlayer2().setTurns(getPlayer2().getDefault_turns());
+                }
+            } else {
+                nowPlaying = 0;
+            }
+        }
+    }
 
     // Methods
     public Player getPlayer1() {
