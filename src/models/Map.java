@@ -1,29 +1,30 @@
 package models;
 
 import information.FrameInfo;
-import information.GameInfo;
-
 import java.util.ArrayList;
 
 public abstract class Map {
-    //Atrributes
+    // ATTRIBUTES
     private String name;
-
     private ArrayList<Obstacle> obstacles;
     private ArrayList<Soup> soups;
-
     public Player player1;
     public Player player2;
 
 
-    // Constructor
+
+    // CONSTRUCTOR
     public Map(String mapName){
         obstacles = new ArrayList<>();
         soups = new ArrayList<>();
         initializeObstacle();
     }
 
-    //Getter Setter
+
+
+    // GETTER-SETTER
+
+
     // Name
     public String getName() {
         return name;
@@ -37,6 +38,7 @@ public abstract class Map {
             this.name = "No Name";
         }
     }
+
 
     // obstacles
     public ArrayList<Obstacle> getObstacles() {
@@ -85,7 +87,9 @@ public abstract class Map {
     }
 
 
-    // methods
+
+    // METHODS
+
 
     // reset map
     public void resetMap(){
@@ -93,7 +97,6 @@ public abstract class Map {
         soups.clear();
         initializeObstacle();
     }
-
 
 
     // Tiles Relative Coordinate

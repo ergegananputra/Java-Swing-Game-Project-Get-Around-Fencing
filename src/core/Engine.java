@@ -4,12 +4,8 @@ import GUI.GamePlayGUI;
 import information.GameInfo;
 import models.Map;
 import models.Player;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.logging.Logger;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 
 public class Engine {
     // Developer
@@ -22,8 +18,6 @@ public class Engine {
     // Getter n Setter
 
     // now Playing
-
-
     public int getNowPlaying() {
         return nowPlaying;
     }
@@ -72,7 +66,14 @@ public class Engine {
         if (getPlayer1().getCoordinateX() == getPlayer2().getCoordinateX()
                 && getPlayer1().getCoordinateY() == getPlayer2().getCoordinateY()){
             GameInfo.isGameEnd = true;
-            System.out.println("player " + nowPlaying + " Win!!");
+
+            // TODO: Delete sout if GUI already implemented!
+            if (nowPlaying == 1){
+                System.out.println(map.player1.getName() + " Win !");
+            } else {
+                System.out.println(map.player2.getName() + " Win !");
+            }
+
         }
     }
 

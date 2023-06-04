@@ -5,18 +5,25 @@ import javax.swing.*;
 
 public abstract class Player extends Coordinate implements IMoveable{
 
-    //Attributes
+    // ATTRIBUTES
     private String name;
     private int turns = 1;
     private int default_turns = turns;
     public final JLabel character;
 
-    //Constructor
+
+
+    // CONSTRUCTORS
     public Player(String outfit){
         this.character = new JLabel(new ImageIcon(outfit));
     }
 
-    //Getter Setter
+
+
+    // GETTER-SETTER
+
+    // name
+
     public String getName() {
         return name;
     }
@@ -30,6 +37,9 @@ public abstract class Player extends Coordinate implements IMoveable{
         }
     }
 
+
+    // turns
+
     public int getTurns() {
         return turns;
     }
@@ -39,6 +49,7 @@ public abstract class Player extends Coordinate implements IMoveable{
             this.turns -= turns;
         }
     }
+
     public void setTurns(int turns){
         if(turns > 0){
             this.turns = turns;
@@ -56,6 +67,12 @@ public abstract class Player extends Coordinate implements IMoveable{
         return default_turns;
     }
 
+
+
+    // METHODS
+
+    // set initial position
+
     public void setInitialPosition(int x, int y){
         character.setBounds(x, y, FrameInfo.tileSize, FrameInfo.tileSize);
         setCoordinateX(x);
@@ -63,7 +80,10 @@ public abstract class Player extends Coordinate implements IMoveable{
         updateLocation();
     }
 
+
+    // update location
     public void updateLocation(){
         character.setLocation(getCoordinateX(), getCoordinateY());
     }
+
 }

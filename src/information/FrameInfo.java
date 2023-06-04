@@ -1,6 +1,9 @@
 package information;
 
 public class FrameInfo {
+
+    // GENERAL INFORMATION
+
     // index                                     0           1           2           3
     private static final int[][] screens = {{1000,750}, {1366,768}, {1440,1080}, {1920,1080}} ;
     private static final String[] backgrounds = {
@@ -10,6 +13,9 @@ public class FrameInfo {
             "src/assets/background/placeholder_FHD_Wide.png"
     };
 
+
+
+    // DERIVATIVE VARIABLE
     private static int userScreenSetting;
 
     public static String background = backgrounds[userScreenSetting];
@@ -24,7 +30,11 @@ public class FrameInfo {
     public static int arenaYstart = frameHeight/2 - arenaSize/2;
     public static int arenaYend = frameHeight/2 + arenaSize/2;
 
-    // setter
+
+
+    // SETTER
+
+    // user screen setting
     public static void setUserScreenSetting(int preset){
         if (preset>=0 && preset<4){
             FrameInfo.userScreenSetting = preset;
@@ -32,6 +42,29 @@ public class FrameInfo {
         }
     }
 
+
+    // tile size
+    private static int getTileSize(){
+        return userScreenSetting > 1? 70 : 50;
+    }
+
+
+    // arena size
+    private static int getArenaSize(){
+        return userScreenSetting > 1? 840 : 600;
+    }
+
+
+    // user screen setting
+    public static int getUserScreenSetting() {
+        return userScreenSetting;
+    }
+
+
+
+    // METHODS
+
+    // refresh
     public static void refresh(){
         background = backgrounds[userScreenSetting];
         frameWidth = screens[userScreenSetting][0];
@@ -44,15 +77,5 @@ public class FrameInfo {
         arenaYend = frameHeight/2 + arenaSize/2;
     }
 
-    private static int getTileSize(){
-        return userScreenSetting > 1? 70 : 50;
-    }
 
-    private static int getArenaSize(){
-        return userScreenSetting > 1? 840 : 600;
-    }
-
-    public static int getUserScreenSetting() {
-        return userScreenSetting;
-    }
 }

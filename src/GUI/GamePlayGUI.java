@@ -2,6 +2,7 @@ package GUI;
 import core.Engine;
 import information.FrameInfo;
 import information.GameInfo;
+import models.Creeper;
 import models.Map1;
 import models.Spider;
 import javax.swing.*;
@@ -57,7 +58,7 @@ public class GamePlayGUI extends JFrame {
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
         backgroundLabel.add(player1.character);
 
-        Spider player2 = new Spider("Player 2");
+        Creeper player2 = new Creeper("Player 2");
         player2.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
         backgroundLabel.add(player2.character);
 

@@ -1,13 +1,18 @@
 package models;
+
 import information.FrameInfo;
 import information.GameInfo;
 
 public class PlayerPhysic extends  Player implements IMoveable{
 
+    // CONSTRUCTOR
     public PlayerPhysic(String outfit) {
         super(outfit);
     }
 
+
+
+    // METHODS
 
     // Move
     @Override
@@ -28,7 +33,7 @@ public class PlayerPhysic extends  Player implements IMoveable{
     @Override
     public void goLeft() {
         if (!GameInfo.core.map.isObstacle(getCoordinateX() - FrameInfo.tileSize, getCoordinateY())){
-            decrementtX(FrameInfo.tileSize);
+            decrementX(FrameInfo.tileSize);
         }
 
     }

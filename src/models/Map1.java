@@ -3,11 +3,17 @@ package models;
 import information.FrameInfo;
 
 public class Map1 extends Map{
-
+    // CONSTRUCTORS
     public Map1(String name){
         super(name);
     }
 
+
+
+    // METHODS
+
+
+    // INITIALIZE OBSTACLE
     protected final void initializeObstacle(){
         // Top
         addObstacles(new Obstacle(getTilesRelativeCoorX(4), getTilesRelativeCoorY(2)));
