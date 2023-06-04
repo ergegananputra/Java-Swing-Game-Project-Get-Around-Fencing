@@ -1,10 +1,13 @@
 package information;
 
 import core.Engine;
+import models.Soup;
 
 public class GameInfo {
     public static boolean isGameEnd = false;
     public static int moves = 0;
 
     public static Engine core;
+
+
 }

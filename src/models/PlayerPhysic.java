@@ -12,7 +12,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
     // Move
     @Override
     public void goUp() {
-        //TODO: naik
         if (!GameInfo.core.map.isObstacle(getCoordinateX(), getCoordinateY() - FrameInfo.tileSize)){
             decrementY(FrameInfo.tileSize);
         }
@@ -20,7 +19,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
 
     @Override
     public void goDown() {
-        //TODO: turun
         if (!GameInfo.core.map.isObstacle(getCoordinateX(), getCoordinateY() + FrameInfo.tileSize)){
             incrementY(FrameInfo.tileSize);
         }
@@ -29,7 +27,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
 
     @Override
     public void goLeft() {
-        //TODO: kiri
         if (!GameInfo.core.map.isObstacle(getCoordinateX() - FrameInfo.tileSize, getCoordinateY())){
             decrementtX(FrameInfo.tileSize);
         }
@@ -38,7 +35,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
 
     @Override
     public void goRight() {
-        //TODO: kanan
         if (!GameInfo.core.map.isObstacle(getCoordinateX() + FrameInfo.tileSize, getCoordinateY())){
             incrementX(FrameInfo.tileSize);
         }

@@ -139,6 +139,7 @@ public class GamePlayGUI extends JFrame {
 
                 }
 
+                GameInfo.core.checkIsThereAWinner();
                 GameInfo.core.nextNowPlaying();
 
 

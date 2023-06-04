@@ -20,6 +20,7 @@ public abstract class Map {
     public Map(String mapName){
         obstacles = new ArrayList<>();
         soups = new ArrayList<>();
+        initializeObstacle();
     }
 
     //Getter Setter

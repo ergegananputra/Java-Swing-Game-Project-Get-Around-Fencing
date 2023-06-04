@@ -39,8 +39,6 @@ public class Engine {
                    nowPlaying = 2;
                     getPlayer2().setTurns(getPlayer2().getDefault_turns());
                 }
-            } else {
-                nowPlaying = 0;
             }
         }
     }
@@ -70,6 +68,12 @@ public class Engine {
         this.map = map;
     }
 
-
+    public void checkIsThereAWinner(){
+        if (getPlayer1().getCoordinateX() == getPlayer2().getCoordinateX()
+                && getPlayer1().getCoordinateY() == getPlayer2().getCoordinateY()){
+            GameInfo.isGameEnd = true;
+            System.out.println("player " + nowPlaying + " Win!!");
+        }
+    }
 
 }
