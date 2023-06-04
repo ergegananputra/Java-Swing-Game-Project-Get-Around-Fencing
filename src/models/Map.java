@@ -46,6 +46,15 @@ public abstract class Map {
     public void addObstacles(Obstacle obstacle){
         obstacles.add(obstacle);
     }
+    public boolean isObstacle(int x, int y){
+        for (Obstacle obstacle : obstacles) {
+            if(obstacle.isOnObstacle(x,y)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected abstract void initializeObstacle();
 
 
@@ -56,6 +65,15 @@ public abstract class Map {
 
     public void addSoups(Soup soup){
         soups.add(soup);
+    }
+
+    public boolean isSoup(int x, int y){
+        for (Soup soup : soups) {
+            if(soup.isOnSoup(x,y)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -75,9 +93,6 @@ public abstract class Map {
         initializeObstacle();
     }
 
-    // next player
-
-
 
 
     // Tiles Relative Coordinate
@@ -86,7 +101,7 @@ public abstract class Map {
     }
 
     public int getTilesRelativeCoorY(int tileIndex){
-        return tileIndex * FrameInfo.tileSize + FrameInfo.arenaXstart;
+        return tileIndex * FrameInfo.tileSize + FrameInfo.arenaYstart;
     }
 
 

@@ -1,5 +1,7 @@
 package models;
 
+import information.FrameInfo;
+
 public class Soup extends Coordinate{
     private String name;
     private int effect;
@@ -10,7 +12,7 @@ public class Soup extends Coordinate{
         setEffect(effect);
     }
 
-    public boolean isSoup(int x, int y) {
+    public boolean isOnSoup(int x, int y) {
         return super.getCoordinateX() == x && super.getCoordinateY() == y;
     }
 

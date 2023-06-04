@@ -10,38 +10,34 @@ public class Map1 extends Map{
     }
 
     protected final void initializeObstacle(){
+        Obstacle x = new Obstacle(getTilesRelativeCoorX(4), getTilesRelativeCoorY(2));
+        System.out.println(x.getCoordinateX() + " " + x.getCoordinateY() );
+
         if (FrameInfo.getUserScreenSetting() > 1) {
             // Top
-            addObstacles(new Obstacle(getTilesRelativeCoorX(5), getTilesRelativeCoorY(3)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(6), getTilesRelativeCoorY(3)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(7), getTilesRelativeCoorY(3)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(8), getTilesRelativeCoorY(3)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(9), getTilesRelativeCoorY(3)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(10), getTilesRelativeCoorY(3)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(4), getTilesRelativeCoorY(2)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(5), getTilesRelativeCoorY(2)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(6), getTilesRelativeCoorY(2)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(7), getTilesRelativeCoorY(2)));
+
 
             // Left
-            addObstacles(new Obstacle(getTilesRelativeCoorX(3), getTilesRelativeCoorY(5)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(3), getTilesRelativeCoorY(6)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(3), getTilesRelativeCoorY(7)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(3), getTilesRelativeCoorY(8)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(3), getTilesRelativeCoorY(9)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(3), getTilesRelativeCoorY(10)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(2), getTilesRelativeCoorY(4)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(2), getTilesRelativeCoorY(5)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(2), getTilesRelativeCoorY(6)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(2), getTilesRelativeCoorY(7)));
 
             // Right
-            addObstacles(new Obstacle(getTilesRelativeCoorX(12), getTilesRelativeCoorY(5)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(12), getTilesRelativeCoorY(6)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(12), getTilesRelativeCoorY(7)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(12), getTilesRelativeCoorY(8)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(12), getTilesRelativeCoorY(9)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(12), getTilesRelativeCoorY(10)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(9), getTilesRelativeCoorY(4)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(9), getTilesRelativeCoorY(5)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(9), getTilesRelativeCoorY(6)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(9), getTilesRelativeCoorY(7)));
 
             // Bottom
-            addObstacles(new Obstacle(getTilesRelativeCoorX(5), getTilesRelativeCoorY(12)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(6), getTilesRelativeCoorY(12)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(7), getTilesRelativeCoorY(12)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(8), getTilesRelativeCoorY(12)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(9), getTilesRelativeCoorY(12)));
-            addObstacles(new Obstacle(getTilesRelativeCoorX(10), getTilesRelativeCoorY(12)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(4), getTilesRelativeCoorY(9)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(5), getTilesRelativeCoorY(9)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(6), getTilesRelativeCoorY(9)));
+            addObstacles(new Obstacle(getTilesRelativeCoorX(7), getTilesRelativeCoorY(9)));
         }
     }
 }

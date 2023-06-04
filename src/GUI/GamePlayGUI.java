@@ -74,8 +74,9 @@ public class GamePlayGUI extends JFrame {
 
         //WARNING: No Edit Zone -- Start
 
-        Engine core = new Engine();
-        core.setMap(demoMap);
+        GameInfo.core = new Engine();
+        GameInfo.core.setMap(demoMap);
+
 
         // Add Event Listener
         addKeyListener(new KeyListener() {
@@ -85,71 +86,69 @@ public class GamePlayGUI extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
-                if (core.getNowPlaying() == 1 && !GameInfo.isGameEnd) {
+                if (!GameInfo.isGameEnd && GameInfo.core.getNowPlaying() == 1) {
 
                     switch (keyCode){
                         case KeyEvent.VK_UP -> {
-                            core.getPlayer1().goUp();
-                            core.getPlayer1().decreaseTurns(1);
+                            GameInfo.core.getPlayer1().goUp();
+                            GameInfo.core.getPlayer1().decreaseTurns(1);
                         }
                         case KeyEvent.VK_DOWN -> {
-                            core.getPlayer1().goDown();
-                            core.getPlayer1().decreaseTurns(1);
+                            GameInfo.core.getPlayer1().goDown();
+                            GameInfo.core.getPlayer1().decreaseTurns(1);
                         }
                         case KeyEvent.VK_LEFT -> {
-                            core.getPlayer1().goLeft();
-                            core.getPlayer1().decreaseTurns(1);
+                            GameInfo.core.getPlayer1().goLeft();
+                            GameInfo.core.getPlayer1().decreaseTurns(1);
                         }
                         case KeyEvent.VK_RIGHT -> {
-                            core.getPlayer1().goRight();
-                            core.getPlayer1().decreaseTurns(1);
+                            GameInfo.core.getPlayer1().goRight();
+                            GameInfo.core.getPlayer1().decreaseTurns(1);
                         }
                         default -> {}
                     }
 
-                    core.getPlayer1().updateLocation();
-                    core.nextNowPlaying();
+                    GameInfo.core.getPlayer1().updateLocation();
 
 
-                } else if (core.getNowPlaying() == 2 && !GameInfo.isGameEnd) {
+
+                } else if (!GameInfo.isGameEnd && GameInfo.core.getNowPlaying() == 2) {
 
                     switch (keyCode){
                         case KeyEvent.VK_W -> {
-                            core.getPlayer2().goUp();
-                            core.getPlayer2().decreaseTurns(1);
+                            GameInfo.core.getPlayer2().goUp();
+                            GameInfo.core.getPlayer2().decreaseTurns(1);
                         }
                         case KeyEvent.VK_S -> {
-                            core.getPlayer2().goDown();
-                            core.getPlayer2().decreaseTurns(1);
+                            GameInfo.core.getPlayer2().goDown();
+                            GameInfo.core.getPlayer2().decreaseTurns(1);
                         }
                         case KeyEvent.VK_A -> {
-                            core.getPlayer2().goLeft();
-                            core.getPlayer2().decreaseTurns(1);
+                            GameInfo.core.getPlayer2().goLeft();
+                            GameInfo.core.getPlayer2().decreaseTurns(1);
                         }
                         case KeyEvent.VK_D -> {
-                            core.getPlayer2().goRight();
-                            core.getPlayer2().decreaseTurns(1);
+                            GameInfo.core.getPlayer2().goRight();
+                            GameInfo.core.getPlayer2().decreaseTurns(1);
                         }
                         default -> {}
                     }
-                    core.getPlayer2().updateLocation();
-                    core.nextNowPlaying();
+                    GameInfo.core.getPlayer2().updateLocation();
 
                 } else {
 
                 }
+
+                GameInfo.core.nextNowPlaying();
 
 
                 // Developer logic
 
 
                 if (degbugMode){
-                    LOGGER.info("Sekarang giliran : " + core.getNowPlaying() + ", Turns [ " + core.getPlayer1().getTurns() + " , " + core.getPlayer2().getTurns() + " ]");
-                    if (core.getNowPlaying()== 1){
-                        LOGGER.info(core.getPlayer1().character.getLocation().toString());
-                    } else if (core.getNowPlaying() == 2){
-                        LOGGER.info(core.getPlayer2().character.getLocation().toString());
-                    }
+                    LOGGER.info("Sekarang giliran : " + GameInfo.core.getNowPlaying() + ", Turns [ " + GameInfo.core.getPlayer1().getTurns() + " , " + GameInfo.core.getPlayer2().getTurns() + " ]");
+                    LOGGER.info("Player 1 : " + GameInfo.core.getPlayer1().getCoordinateX() + ", " + GameInfo.core.getPlayer1().getCoordinateY() + "\n" +
+                                     "Player 2 : " + GameInfo.core.getPlayer2().getCoordinateX() + ", " + GameInfo.core.getPlayer2().getCoordinateY());
                 }
 
             }
