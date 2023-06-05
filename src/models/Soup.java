@@ -22,6 +22,8 @@ public class Soup extends Coordinate{
         setEffect(effect);
         soup = new JLabel(new ImageIcon(OUTFIT));
         soup.setBounds(x, y, FrameInfo.tileSize, FrameInfo.tileSize);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
 

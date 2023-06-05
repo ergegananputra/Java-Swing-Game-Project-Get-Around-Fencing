@@ -20,9 +20,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
         if (!GameInfo.core.map.isObstacle(getCoordinateX(), getCoordinateY() - FrameInfo.tileSize)){
             decrementY(FrameInfo.tileSize);
         }
-        if (GameInfo.core.map.isSoup(getCoordinateX(), getCoordinateY())){
-            setDefault_turns(GameInfo.core.map.getSoupFromCoordinate(getCoordinateX(),getCoordinateY()).getEffect());
-        }
     }
 
     @Override
@@ -30,10 +27,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
         if (!GameInfo.core.map.isObstacle(getCoordinateX(), getCoordinateY() + FrameInfo.tileSize)){
             incrementY(FrameInfo.tileSize);
         }
-        if (GameInfo.core.map.isSoup(getCoordinateX(), getCoordinateY())){
-            setDefault_turns(GameInfo.core.map.getSoupFromCoordinate(getCoordinateX(),getCoordinateY()).getEffect());
-        }
-
     }
 
     @Override
@@ -41,10 +34,6 @@ public class PlayerPhysic extends  Player implements IMoveable{
         if (!GameInfo.core.map.isObstacle(getCoordinateX() - FrameInfo.tileSize, getCoordinateY())){
             decrementX(FrameInfo.tileSize);
         }
-        if (GameInfo.core.map.isSoup(getCoordinateX(), getCoordinateY())){
-            setDefault_turns(GameInfo.core.map.getSoupFromCoordinate(getCoordinateX(),getCoordinateY()).getEffect());
-        }
-
     }
 
     @Override
@@ -52,9 +41,5 @@ public class PlayerPhysic extends  Player implements IMoveable{
         if (!GameInfo.core.map.isObstacle(getCoordinateX() + FrameInfo.tileSize, getCoordinateY())){
             incrementX(FrameInfo.tileSize);
         }
-        if (GameInfo.core.map.isSoup(getCoordinateX(), getCoordinateY())){
-            setDefault_turns(GameInfo.core.map.getSoupFromCoordinate(getCoordinateX(),getCoordinateY()).getEffect());
-        }
-
     }
 }

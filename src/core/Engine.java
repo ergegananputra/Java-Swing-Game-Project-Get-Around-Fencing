@@ -24,18 +24,19 @@ public class Engine {
 
     public void nextNowPlaying(){
         if (getPlayer1().getTurns() <= 0 || getPlayer2().getTurns() <= 0){
-            GameInfo.moves++;
             if (!GameInfo.isGameEnd) {
                 if (nowPlaying == 2 && getPlayer2().getTurns() <= 0) {
                     nowPlaying = 1;
                     getPlayer1().setTurns(getPlayer1().getDefault_turns());
+                    GameInfo.moves++;
                 } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
                    nowPlaying = 2;
                     getPlayer2().setTurns(getPlayer2().getDefault_turns());
+                    GameInfo.moves++;
                 }
             }
         }
-        if (GameInfo.moves % 4 == 0) {
+        if (GameInfo.moves % 10 == 0) {
             map.generateRandomSoups();
         }
     }
@@ -73,8 +74,10 @@ public class Engine {
             // TODO: Delete sout if GUI already implemented!
             if (nowPlaying == 1){
                 System.out.println(map.player1.getName() + " Win !");
+                GamePlayGUI.backgroundLabel.remove(getPlayer2().character);
             } else {
                 System.out.println(map.player2.getName() + " Win !");
+                GamePlayGUI.backgroundLabel.remove(getPlayer1().character);
             }
 
         }

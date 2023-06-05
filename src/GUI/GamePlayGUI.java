@@ -114,6 +114,8 @@ public class GamePlayGUI extends JFrame {
                         default -> {}
                     }
 
+
+                    GameInfo.core.map.checkStepForSoup(GameInfo.core.getPlayer1());
                     GameInfo.core.getPlayer1().updateLocation();
 
 
@@ -139,6 +141,8 @@ public class GamePlayGUI extends JFrame {
                         }
                         default -> {}
                     }
+
+                    GameInfo.core.map.checkStepForSoup(GameInfo.core.getPlayer2());
                     GameInfo.core.getPlayer2().updateLocation();
 
                 } else {

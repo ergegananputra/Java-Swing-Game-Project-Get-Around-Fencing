@@ -1,6 +1,9 @@
 package models;
 
+import GUI.GamePlayGUI;
 import information.FrameInfo;
+import information.GameInfo;
+
 import java.util.ArrayList;
 
 public abstract class Map {
@@ -84,10 +87,22 @@ public abstract class Map {
         for (Soup soup : soups) {
             if (soup.getCoordinateX() == x && soup.getCoordinateY() == y){
                 int index = soups.indexOf(soup);
-                return soups.remove(index);
+                Soup returnSoup = soups.remove(index);
+                GamePlayGUI.backgroundLabel.remove(returnSoup.soup);
+                return returnSoup;
             }
         }
         return null;
+    }
+
+    public void checkStepForSoup(Player player){
+        if(isSoup(player.getCoordinateX(), player.getCoordinateY())){
+            player.setDefault_turns(
+                    getSoupFromCoordinate(
+                            player.getCoordinateX(),
+                            player.getCoordinateY()
+                    ).getEffect());
+        }
     }
 
 

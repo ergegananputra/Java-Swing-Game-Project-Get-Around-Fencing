@@ -75,7 +75,7 @@ public class Map1 extends Map{
             int index = ThreadLocalRandom.current().nextInt(0, availableSoups.size());
             Soup soup = availableSoups.get(index);
             addSoups(soup);
-            GamePlayGUI.backgroundLabel.add(soup.soup); // add the soup to the background label
+            GamePlayGUI.backgroundLabel.add(soup.soup);
         }
         GamePlayGUI.backgroundLabel.repaint();
     }
