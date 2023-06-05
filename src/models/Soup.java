@@ -8,7 +8,7 @@ public class Soup extends Coordinate{
 
     private String name;
     private int effect;
-    public static final String OUTFIT = "";
+    public static final String OUTFIT = "src/assets/soups/soup_"+ FrameInfo.tileSize +".png";
 
 
 

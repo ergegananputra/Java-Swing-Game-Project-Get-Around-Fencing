@@ -1,8 +1,10 @@
 package models;
 
+import information.FrameInfo;
+
 public class Pig extends PlayerPhysic{
     // ATTRIBUTES
-    public static final String OUTFIT = "src/assets/characters/Pig.png";
+    public static final String OUTFIT = "src/assets/characters/Pig_"+ FrameInfo.tileSize +".png";
 
 
 

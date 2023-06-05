@@ -1,9 +1,11 @@
 package models;
 
+import information.FrameInfo;
+
 public class Sheep extends PlayerPhysic{
 
     // ATTRIBUTES
-    public static final String OUTFIT = "src/assets/characters/Chicken.png";
+    public static final String OUTFIT = "src/assets/characters/Sheep_"+ FrameInfo.tileSize +".png";
 
 
 
