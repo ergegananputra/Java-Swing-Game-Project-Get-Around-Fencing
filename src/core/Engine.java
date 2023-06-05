@@ -1,5 +1,6 @@
 package core;
 
+import GUI.GameEndGUI;
 import GUI.GamePlayGUI;
 import information.GameInfo;
 import models.Map;
@@ -73,9 +74,11 @@ public class Engine {
 
             // TODO: Delete sout if GUI already implemented!
             if (nowPlaying == 1){
+                new GameEndGUI(1, true, map.player1);
                 System.out.println(map.player1.getName() + " Win !");
                 GamePlayGUI.backgroundLabel.remove(getPlayer2().character);
             } else {
+                new GameEndGUI(1, true, map.player2);
                 System.out.println(map.player2.getName() + " Win !");
                 GamePlayGUI.backgroundLabel.remove(getPlayer1().character);
             }
