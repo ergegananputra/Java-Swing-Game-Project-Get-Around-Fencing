@@ -69,7 +69,7 @@ public class GamePlayGUI extends JFrame {
         player1InfoTitleText.setForeground(Color.BLACK);
         player1Panel.add(player1InfoTitleText);
 
-        int turnsP1 = 0; // Contoh nilai dinamis
+        int turnsP1 = 0; // Gataw lagi gimana caranya buat nampiin nila dinamisnya
         JLabel player1InfoMovesText = new JLabel(String.valueOf(turnsP1));
         player1InfoMovesText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
         player1InfoMovesText.setForeground(Color.BLACK);
@@ -93,7 +93,7 @@ public class GamePlayGUI extends JFrame {
         player2InfoTitleText.setForeground(Color.BLACK);
         player2Panel.add(player2InfoTitleText);
 
-        int turnsP2 = 0; // Contoh nilai dinamis
+        int turnsP2 = 0; // Gataw lagi gimana caranya buat nampiin nila dinamisnya
         JLabel player2InfoMovesText = new JLabel(String.valueOf(turnsP2));
         player2InfoMovesText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
         player2InfoMovesText.setForeground(Color.BLACK);
