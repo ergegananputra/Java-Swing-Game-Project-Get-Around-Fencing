@@ -4,6 +4,7 @@ import information.FrameInfo;
 import information.GameInfo;
 import models.Creeper;
 import models.Map1;
+import models.Soup;
 import models.Spider;
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ public class GamePlayGUI extends JFrame {
 
 
     // Attributes
-    private JLabel backgroundLabel;
+    public static JLabel backgroundLabel;
 
     // Constructor
     public GamePlayGUI(int preset, boolean degbugMode) {
@@ -66,6 +67,10 @@ public class GamePlayGUI extends JFrame {
         Map1 demoMap = new Map1("Demo Map");
         demoMap.addPlayers(player1, player2);
 
+        // Generate Initial random Soups
+//        Soup tes = new Soup("tes", 2, GameInfo.core.map.getTilesRelativeCoorX(2), GameInfo.core.map.getTilesRelativeCoorY(2));
+//        JLabel tes.setBounds(50, 50, FrameInfo.tileSize, FrameInfo.tileSize);
+        demoMap.generateRandomSoups();
 
         /**
          * Dilarang keras untuk merubah sourcode dibawah ini tanpa izin/diskusi

@@ -4,7 +4,6 @@ import information.FrameInfo;
 
 public class Obstacle extends Coordinate{
 
-
     // CONSTRUCTORS
     public Obstacle(int x, int y){
         setCoordinateX(x);

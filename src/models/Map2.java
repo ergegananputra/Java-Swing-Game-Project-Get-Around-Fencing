@@ -17,4 +17,9 @@ public class Map2 extends Map{
         // TODO: add obstacles
     }
 
+    @Override
+    public void generateRandomSoups() {
+        // TODO: add soup
+    }
+
 }
