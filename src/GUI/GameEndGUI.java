@@ -27,10 +27,10 @@ public class GameEndGUI extends JFrame {
         JPanel playerPane = new JPanel(new FlowLayout());
 
         JLabel restart = new JLabel("PRESS ENTER TO RESTART");
-        restart.setFont(new Font("Arial", Font.BOLD,20));
+        restart.setFont(new Font("Minecraft", Font.BOLD,20));
 //        restartBtn.setPreferredSize(new Dimension(180,70));
         JLabel winner = new JLabel("Player " + player.getName() + " Win!");
-        winner.setFont(new Font("Arial", Font.BOLD,30));
+        winner.setFont(new Font("Minecraft", Font.BOLD,30));
 
         restartPane.add(restart);
         playerPane.add(winner);
