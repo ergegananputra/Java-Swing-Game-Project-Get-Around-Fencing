@@ -36,6 +36,9 @@ public class Engine {
                 }
             }
         }
+        if (GameInfo.moves % 4 == 0) {
+            map.generateRandomSoups();
+        }
     }
 
     // Methods

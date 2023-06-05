@@ -59,6 +59,7 @@ public abstract class Map {
     }
 
     protected abstract void initializeObstacle();
+    public abstract void generateRandomSoups();
 
 
     // soups
@@ -77,6 +78,16 @@ public abstract class Map {
             }
         }
         return false;
+    }
+
+    public Soup getSoupFromCoordinate(int x, int y){
+        for (Soup soup : soups) {
+            if (soup.getCoordinateX() == x && soup.getCoordinateY() == y){
+                int index = soups.indexOf(soup);
+                return soups.remove(index);
+            }
+        }
+        return null;
     }
 
 

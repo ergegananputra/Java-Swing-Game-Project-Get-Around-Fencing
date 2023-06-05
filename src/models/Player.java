@@ -63,8 +63,15 @@ public abstract class Player extends Coordinate implements IMoveable{
         }
     }
 
+
+    // default turns
+
     public int getDefault_turns(){
         return default_turns;
+    }
+
+    public void setDefault_turns(int x){
+        default_turns += x;
     }
 
 
