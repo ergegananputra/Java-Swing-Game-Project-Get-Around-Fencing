@@ -6,7 +6,7 @@ public class Spider extends PlayerPhysic{
 
     // ATTRIBUTES
 
-    public static final String OUTFIT = "src/assets/characters/Spider_"+ FrameInfo.tileSize +".png";
+    public static final String OUTFIT = "src/assets/characters/spider/Spider_"+ FrameInfo.tileSize +".png";
 
 
 

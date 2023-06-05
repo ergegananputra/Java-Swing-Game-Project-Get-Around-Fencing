@@ -5,7 +5,7 @@ import information.FrameInfo;
 public class Sheep extends PlayerPhysic{
 
     // ATTRIBUTES
-    public static final String OUTFIT = "src/assets/characters/Sheep_"+ FrameInfo.tileSize +".png";
+    public static final String OUTFIT = "src/assets/characters/sheep/Sheep_"+ FrameInfo.tileSize +".png";
 
 
 
