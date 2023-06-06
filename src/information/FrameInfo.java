@@ -20,6 +20,12 @@ public class FrameInfo {
             "src/assets/homePageMenu/HomePageMenu_FHD.png",
             "src/assets/homePageMenu/HomePageMenu_FHD_Wide.png"
     };
+    private static final String[] gameEnds = {
+            "src/assets/gameEnd/GameEnd_HD.png",
+            "src/assets/gameEnd/GameEnd_HD_Wide.png",
+            "src/assets/gameEnd/GameEnd_FHD.png",
+            "src/assets/gameEnd/GameEnd_FHD_Wide.png"
+    };
 
 
     public static final File fontFile = new File("src/library/font/Minecraft.ttf");
@@ -31,6 +37,7 @@ public class FrameInfo {
 
     public static String background = backgrounds[userScreenSetting];
     public static String homePageMenu = homePageMenus[userScreenSetting];
+    public static String gameEnd = gameEnds[userScreenSetting];
 
     public static int frameWidth = screens[userScreenSetting][0];
     public static int frameHeight = screens[userScreenSetting][1];
@@ -80,6 +87,7 @@ public class FrameInfo {
     public static void refresh(){
         background = backgrounds[userScreenSetting];
         homePageMenu = homePageMenus[userScreenSetting];
+        gameEnd = gameEnds[userScreenSetting];
         frameWidth = screens[userScreenSetting][0];
         frameHeight = screens[userScreenSetting][1];
         tileSize = getTileSize();
