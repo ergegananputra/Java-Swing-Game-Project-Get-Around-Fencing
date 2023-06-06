@@ -14,13 +14,24 @@ public class FrameInfo {
             "src/assets/background/placeholder_FHD.png",
             "src/assets/background/placeholder_FHD_Wide.png"
     };
+    private static final String[] homePageMenus = {
+            "src/assets/homePageMenu/HomePageMenu.png"
+    };
+
+
     public static final File fontFile = new File("src/library/font/Minecraft.ttf");
+    public static final String outfitSelection = "src/assets/homePageMenu/OutfitSelection.png";
 
 
     // DERIVATIVE VARIABLE
     private static int userScreenSetting;
 
     public static String background = backgrounds[userScreenSetting];
+
+
+    // TODO: hapus setelah home page menu lengkap dan uncomment bawahnya
+    public static String homePageMenu = homePageMenus[0];
+//    public static String homePageMenu = homePageMenus[userScreenSetting];
 
     public static int frameWidth = screens[userScreenSetting][0];
     public static int frameHeight = screens[userScreenSetting][1];
