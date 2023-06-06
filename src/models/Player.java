@@ -120,9 +120,9 @@ public abstract class Player extends Coordinate implements IMoveable{
         // Panel Player 1
         playerInfoPanel = new JPanel(new FlowLayout());
         if (getCoordinateX() < FrameInfo.frameWidth/2){
-            playerInfoPanel.setBounds(0, 75, 150, 200);
+            playerInfoPanel.setBounds(50, 75, 150, 200);
         } else {
-            playerInfoPanel.setBounds(FrameInfo.frameWidth - 150, 75, 150, 200);
+            playerInfoPanel.setBounds(FrameInfo.frameWidth - 200, 75, 150, 200);
         }
 
         ImageIcon panelBackground = new ImageIcon("src/assets/panel/PlayerInfoPanel.png");
