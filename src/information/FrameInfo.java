@@ -1,5 +1,7 @@
 package information;
 
+import java.io.File;
+
 public class FrameInfo {
 
     // GENERAL INFORMATION
@@ -12,8 +14,7 @@ public class FrameInfo {
             "src/assets/background/placeholder_FHD.png",
             "src/assets/background/placeholder_FHD_Wide.png"
     };
-    public static final String fontPath = "src/library/font/Minecraft";
-
+    public static final File fontFile = new File("src/library/font/Minecraft.ttf");
 
 
     // DERIVATIVE VARIABLE

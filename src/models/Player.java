@@ -5,6 +5,8 @@ import information.GameInfo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 
 public abstract class Player extends Coordinate implements IMoveable{
 
@@ -102,6 +104,19 @@ public abstract class Player extends Coordinate implements IMoveable{
 
     // create panel
     public void createPanel(){
+        // Load External Font
+        Font minecraftFont = null;
+        try {
+            minecraftFont = Font.createFont(Font.TRUETYPE_FONT, FrameInfo.fontFile);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+
+        assert minecraftFont != null;
+        Font minecraftFontHeader = minecraftFont.deriveFont(Font.PLAIN, 30);
+        Font minecraftInfoTitleText = minecraftFont.deriveFont(Font.PLAIN, 18);
+        Font minecraftTurnLabel = minecraftFont.deriveFont(Font.PLAIN, 50);
+
         // Panel Player 1
         playerInfoPanel = new JPanel(new FlowLayout());
         if (getCoordinateX() < FrameInfo.frameWidth/2){
@@ -114,18 +129,18 @@ public abstract class Player extends Coordinate implements IMoveable{
         playerInfoPanel.setOpaque(true);
         GamePlayGUI.backgroundLabel.add(playerInfoPanel);
 
-        JLabel player1Header = new JLabel(name);
-        player1Header.setFont(new Font(FrameInfo.fontPath, Font.BOLD, 30));
-        player1Header.setForeground(Color.BLACK);
-        playerInfoPanel.add(player1Header);
+        JLabel playerHeader = new JLabel(name);
+        playerHeader.setFont(minecraftFontHeader);
+        playerHeader.setForeground(Color.BLACK);
+        playerInfoPanel.add(playerHeader);
 
-        JLabel player1InfoTitleText = new JLabel("Available Turns");
-        player1InfoTitleText.setFont(new Font(FrameInfo.fontPath, Font.TRUETYPE_FONT, 18));
-        player1InfoTitleText.setForeground(Color.BLACK);
-        playerInfoPanel.add(player1InfoTitleText);
+        JLabel playerInfoTitleText = new JLabel("Available Turns");
+        playerInfoTitleText.setFont(minecraftInfoTitleText);
+        playerInfoTitleText.setForeground(Color.BLACK);
+        playerInfoPanel.add(playerInfoTitleText);
 
         turnLabel = new JLabel(Integer.toString(turns));
-        turnLabel.setFont(new Font(FrameInfo.fontPath, Font.TRUETYPE_FONT, 50));
+        turnLabel.setFont(minecraftTurnLabel);
         playerInfoPanel.add(turnLabel);
     }
 
