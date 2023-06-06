@@ -34,17 +34,20 @@ public class Engine {
                     getPlayer1().setTurns(getPlayer1().getDefault_turns());
                     GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                     GameInfo.moves++;
+                    generateRandomSoup();
+
                 } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
                     nowPlaying = 2;
                     getPlayer2().setTurns(getPlayer2().getDefault_turns());
                     GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                     GameInfo.moves++;
+                    generateRandomSoup();
                 }
+
+
             }
         }
-        if (GameInfo.moves % 20 == 0) {
-            map.generateRandomSoups();
-        }
+
     }
 
     // Methods
@@ -106,6 +109,12 @@ public class Engine {
                 GamePlayGUI.backgroundLabel.remove(getPlayer1().character);
             }
 
+        }
+    }
+
+    private void generateRandomSoup(){
+        if (GameInfo.moves % 20 == 0) {
+            map.generateRandomSoups();
         }
     }
 
