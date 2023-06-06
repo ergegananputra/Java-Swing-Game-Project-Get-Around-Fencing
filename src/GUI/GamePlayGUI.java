@@ -52,54 +52,6 @@ public class GamePlayGUI extends JFrame {
 
         //TODO: ini Map dan Character masih temporary
 
-        // Panel Info Player 1
-        JPanel player1Panel = new JPanel(new FlowLayout());
-        player1Panel.setBounds(0, 75, 150, 200);
-        player1Panel.setOpaque(false);
-        backgroundLabel.add(player1Panel);
-
-        // Content of Panel Info Player 1
-        JLabel player1Header = new JLabel("Player 1");
-        player1Header.setFont(new Font("Minecraft", Font.BOLD, 30));
-        player1Header.setForeground(Color.BLACK);
-        player1Panel.add(player1Header);
-
-        JLabel player1InfoTitleText = new JLabel("Available Turns");
-        player1InfoTitleText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 18));
-        player1InfoTitleText.setForeground(Color.BLACK);
-        player1Panel.add(player1InfoTitleText);
-
-        int turnsP1 = 0; // Gataw lagi gimana caranya buat nampiin nila dinamisnya
-        JLabel player1InfoMovesText = new JLabel(String.valueOf(turnsP1));
-        player1InfoMovesText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
-        player1InfoMovesText.setForeground(Color.BLACK);
-        player1Panel.add(player1InfoMovesText);
-
-
-        // Panel Info Player 2
-        JPanel player2Panel = new JPanel(new FlowLayout());
-        player2Panel.setBounds(850, 75, 150, 200);
-        player2Panel.setOpaque(false);
-        backgroundLabel.add(player2Panel);
-
-        // Content of Panel Info Player 2
-        JLabel player2Header = new JLabel("Player 2");
-        player2Header.setFont(new Font("Minecraft", Font.BOLD, 30));
-        player2Header.setForeground(Color.BLACK);
-        player2Panel.add(player2Header);
-
-        JLabel player2InfoTitleText = new JLabel("Available Turns");
-        player2InfoTitleText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 18));
-        player2InfoTitleText.setForeground(Color.BLACK);
-        player2Panel.add(player2InfoTitleText);
-
-        int turnsP2 = 0; // Gataw lagi gimana caranya buat nampiin nila dinamisnya
-        JLabel player2InfoMovesText = new JLabel(String.valueOf(turnsP2));
-        player2InfoMovesText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
-        player2InfoMovesText.setForeground(Color.BLACK);
-        player2Panel.add(player2InfoMovesText);
-
-
         // Character
         Spider player1 = new Spider("Player 1");
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
@@ -195,6 +147,9 @@ public class GamePlayGUI extends JFrame {
 
                 }
 
+
+                GameInfo.core.map.player1.updateInfoPanel();
+                GameInfo.core.map.player2.updateInfoPanel();
                 GameInfo.core.checkIsThereAWinner();
                 GameInfo.core.nextNowPlaying();
 
