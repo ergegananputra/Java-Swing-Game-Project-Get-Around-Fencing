@@ -125,23 +125,26 @@ public abstract class Player extends Coordinate implements IMoveable{
             playerInfoPanel.setBounds(FrameInfo.frameWidth - 150, 75, 150, 200);
         }
 
-        playerInfoPanel.setBackground(Color.CYAN);
-        playerInfoPanel.setOpaque(true);
+        ImageIcon panelBackground = new ImageIcon("src/assets/panel/PlayerInfoPanel.png");
+        JLabel panelLabel = new JLabel(panelBackground);
+        panelLabel.setLayout(new FlowLayout());
         GamePlayGUI.backgroundLabel.add(playerInfoPanel);
+        playerInfoPanel.add(panelLabel);
 
         JLabel playerHeader = new JLabel(name);
         playerHeader.setFont(minecraftFontHeader);
-        playerHeader.setForeground(Color.BLACK);
-        playerInfoPanel.add(playerHeader);
+        playerHeader.setForeground(Color.WHITE);
+        panelLabel.add(playerHeader);
 
         JLabel playerInfoTitleText = new JLabel("Available Turns");
         playerInfoTitleText.setFont(minecraftInfoTitleText);
-        playerInfoTitleText.setForeground(Color.BLACK);
-        playerInfoPanel.add(playerInfoTitleText);
+        playerInfoTitleText.setForeground(Color.WHITE);
+        panelLabel.add(playerInfoTitleText);
 
         turnLabel = new JLabel(Integer.toString(turns));
         turnLabel.setFont(minecraftTurnLabel);
-        playerInfoPanel.add(turnLabel);
+        turnLabel.setForeground(Color.WHITE);
+        panelLabel.add(turnLabel);
     }
 
     public void updatePlayerTurnLabel(){
