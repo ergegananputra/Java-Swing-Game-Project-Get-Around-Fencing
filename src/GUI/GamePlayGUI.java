@@ -52,6 +52,7 @@ public class GamePlayGUI extends JFrame {
 
         //TODO: ini Map dan Character masih temporary
 
+
         // Character
         Spider player1 = new Spider("Player 1");
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
@@ -148,8 +149,8 @@ public class GamePlayGUI extends JFrame {
                 }
 
 
-                GameInfo.core.map.player1.updateInfoPanel();
-                GameInfo.core.map.player2.updateInfoPanel();
+                GameInfo.core.map.player1.updateInfoPanel(0);
+                GameInfo.core.map.player2.updateInfoPanel(850);
                 GameInfo.core.checkIsThereAWinner();
                 GameInfo.core.nextNowPlaying();
 

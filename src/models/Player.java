@@ -21,7 +21,7 @@ public abstract class Player extends Coordinate implements IMoveable{
     // CONSTRUCTORS
     public Player(String outfit){
         this.character = new JLabel(new ImageIcon(outfit));
-        setInfoPanel(0);
+        setInfoPanel(0, 0);
     }
 
 
@@ -85,9 +85,9 @@ public abstract class Player extends Coordinate implements IMoveable{
     // METHODS
 
     // set info panel
-    public void setInfoPanel(int turns){
+    public void setInfoPanel(int turns, int x){
         playerInfoPanel = new JPanel(new FlowLayout());
-        playerInfoPanel.setBounds(0, 75, 150, 200);
+        playerInfoPanel.setBounds(x, 75, 150, 200);
         playerInfoPanel.setOpaque(false);
         GamePlayGUI.backgroundLabel.add(playerInfoPanel);
 
@@ -101,7 +101,7 @@ public abstract class Player extends Coordinate implements IMoveable{
         player1InfoTitleText.setForeground(Color.BLACK);
         playerInfoPanel.add(player1InfoTitleText);
 
-        turnJLabel = new JLabel(String.valueOf(turns));
+        turnJLabel = new JLabel(String.valueOf(getTurns()));
         turnJLabel.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
         turnJLabel.setForeground(Color.BLACK);
         playerInfoPanel.add(turnJLabel);
@@ -109,10 +109,10 @@ public abstract class Player extends Coordinate implements IMoveable{
     }
 
     // update info panel
-    public void updateInfoPanel(){
-        GamePlayGUI.backgroundLabel.remove(playerInfoPanel);
-        setInfoPanel(getTurns());
-        GamePlayGUI.backgroundLabel.add(playerInfoPanel);
+    public void updateInfoPanel(int x){
+        GamePlayGUI.backgroundLabel.remove(turnJLabel);
+        setInfoPanel(getTurns(), x);
+        GamePlayGUI.backgroundLabel.add(turnJLabel);
     };
 
 
