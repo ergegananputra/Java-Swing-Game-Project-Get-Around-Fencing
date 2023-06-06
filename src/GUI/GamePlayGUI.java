@@ -254,7 +254,7 @@ public class GamePlayGUI extends JFrame {
     }
     public void updatePlayerMoves(JLabel label, int moves) {
         label.setText(Integer.toString(moves));
-        if (player1Turns == 0 && player2Turns == 0){
+        if (player1Turns <= 0 && player2Turns <= 0){
             player1Turns = 1;
             player2Turns = 1;
             updatePlayerMoves(player1Label, player1Turns);
