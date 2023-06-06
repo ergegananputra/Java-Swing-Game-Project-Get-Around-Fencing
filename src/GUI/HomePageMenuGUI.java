@@ -1,9 +1,9 @@
 package GUI;
 
+import core.Engine;
 import information.FrameInfo;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -57,7 +57,26 @@ public class HomePageMenuGUI extends JFrame {
                 switch (keyCode) {
                     case KeyEvent.VK_ENTER:
                         dispose();
-                        new GamePlayGUI(preset, debugMode);
+
+                        int player1Character;
+                        switch (select2Pos){
+                            case 100 -> player1Character = 0;
+                            case 185 -> player1Character = 1;
+                            case 270 -> player1Character = 2;
+                            case 355 -> player1Character = 3;
+                            default -> player1Character = 0;
+                        }
+
+                        int player2Character;
+                        switch (select1Pos){
+                            case -370 -> player2Character = 0;
+                            case -285 -> player2Character = 1;
+                            case -200 -> player2Character = 2;
+                            case -115 -> player2Character = 3;
+                            default -> player2Character = 0;
+                        }
+
+                        Engine.gamePlayGUI = new GamePlayGUI(preset, debugMode, player1Character, player2Character);
                         break;
 
                     case KeyEvent.VK_W:

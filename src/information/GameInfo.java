@@ -1,13 +1,14 @@
 package information;
 
+import GUI.GameEndGUI;
+import GUI.GamePlayGUI;
+import GUI.HomePageMenuGUI;
 import core.Engine;
 import models.Soup;
 
 public class GameInfo {
     public static boolean isGameEnd = false;
     public static int moves = 0;
-    public static int turnsP1 = 0;
-    public static int turnsP2 = 0;
     public static Engine core;
 
 

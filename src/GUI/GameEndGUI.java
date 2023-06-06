@@ -68,11 +68,8 @@ public class GameEndGUI extends JFrame {
                 switch (keyCode) {
                     case KeyEvent.VK_ENTER:
                         dispose();
-                        new GamePlayGUI(preset, debugMode);
+                        new HomePageMenuGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode);
                         break;
-//                    case KeyEvent.VK_ESCAPE:
-//                        dispose();
-//                        break;
                     default:
                         break;
                 }

@@ -12,15 +12,19 @@ import java.util.logging.*;
 public class GamePlayGUI extends JFrame {
     // Developer Atributes
     private static final Logger LOGGER = Logger.getLogger(GamePlayGUI.class.getName());
+    public  static boolean debugMode;
 
 
     // Attributes
     public static JLabel backgroundLabel;
+    private Map map;
 
 
 
     // Constructor
-    public GamePlayGUI(int preset, boolean degbugMode) {
+    public GamePlayGUI(int preset, boolean degbugMode, int player1Character, int player2Character) {
+        GamePlayGUI.debugMode = degbugMode;
+
         // Set User Screen Setting Preference
         FrameInfo.setUserScreenSetting(preset);
         FrameInfo.refresh();
@@ -54,20 +58,7 @@ public class GamePlayGUI extends JFrame {
 
         //TODO: ini Map dan Character masih temporary
 
-        // Character
-        Spider player1 = new Spider("Player 1");
-        player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
-        backgroundLabel.add(player1.character);
-
-        Creeper player2 = new Creeper("Player 2");
-        player2.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
-        backgroundLabel.add(player2.character);
-
-        // Create Map
-        Map1 demoMap = new Map1("Demo Map");
-        demoMap.addPlayers(player1, player2);
-
-        demoMap.generateRandomSoups();
+        selectCharacterPlayers(player1Character, player2Character);
 
         /**
          * Dilarang keras untuk merubah sourcode dibawah ini tanpa izin/diskusi
@@ -78,7 +69,7 @@ public class GamePlayGUI extends JFrame {
         //WARNING: No Edit Zone -- Start
 
         GameInfo.core = new Engine();
-        GameInfo.core.setMap(demoMap);
+        GameInfo.core.setMap(map);
 
 
         // Add Event Listener
@@ -180,5 +171,35 @@ public class GamePlayGUI extends JFrame {
         //WARNING: No Edit Zone -- End
 
         setVisible(true);
+    }
+
+    private Player getCharacterFromPreset(int preset, String name){
+        Player character;
+        switch (preset){
+            case 0 -> character = new Creeper(name);
+            case 1 -> character = new Pig(name);
+            case 2 -> character = new Sheep(name);
+            case 3 -> character = new Spider(name);
+            default -> character = new Spider(name);
+        }
+        return character;
+    }
+
+    void selectCharacterPlayers(int presetP1, int presetP2){
+        // Character
+        Player player1 = getCharacterFromPreset(presetP1, "Player 1");
+        Player player2 = getCharacterFromPreset(presetP2, "Player 2");
+
+        player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
+        player2.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
+
+        backgroundLabel.add(player1.character);
+        backgroundLabel.add(player2.character);
+
+        // Create Map
+        map = new Map1("Demo Map");
+        map.addPlayers(player1, player2);
+
+        map.generateRandomSoups();
     }
 }
