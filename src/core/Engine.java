@@ -80,7 +80,7 @@ public class Engine {
                 Map newMap1 = new Map1("New Game");
                 newCore.setMap(newMap1);
                 GameInfo.restart(newCore);
-                new GameEndGUI(1, true, map.player1);
+                new GameEndGUI(0, true, map.player1);
 
 
                 System.out.println(map.player1.getName() + " Win !");
@@ -92,7 +92,7 @@ public class Engine {
                 newCore.setMap(newMap1);
                 GameInfo.restart(newCore);
 
-                new GameEndGUI(1, true, map.player2);
+                new GameEndGUI(0, true, map.player2);
                 System.out.println(map.player2.getName() + " Win !");
                 GamePlayGUI.backgroundLabel.remove(getPlayer1().character);
             }
