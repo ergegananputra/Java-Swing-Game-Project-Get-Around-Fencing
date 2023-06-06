@@ -12,6 +12,7 @@ public class FrameInfo {
             "src/assets/background/placeholder_FHD.png",
             "src/assets/background/placeholder_FHD_Wide.png"
     };
+    public static final String fontPath = "src/library/font/Minecraft";
 
 
 
