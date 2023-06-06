@@ -16,8 +16,8 @@ public class GamePlayGUI extends JFrame {
 
     // Attributes
     public static JLabel backgroundLabel;
-    private JLabel player1Label;
-    private JLabel player2Label;
+
+
 
     // Constructor
     public GamePlayGUI(int preset, boolean degbugMode) {
