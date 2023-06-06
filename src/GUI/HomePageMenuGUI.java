@@ -15,6 +15,10 @@ public class HomePageMenuGUI extends JFrame {
     private int select2Pos;
 
     public HomePageMenuGUI(int preset, boolean debugMode) {
+        FrameInfo.setUserScreenSetting(preset);
+        FrameInfo.refresh();
+
+
         // default value
         select1Pos = -370;
         select2Pos = 100;
