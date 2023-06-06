@@ -2,6 +2,7 @@ package core;
 
 import GUI.GameEndGUI;
 import GUI.GamePlayGUI;
+import information.FrameInfo;
 import information.GameInfo;
 import models.Map;
 import models.Map1;
@@ -16,6 +17,7 @@ public class Engine {
     // Atributes
     public Map map;
     private int nowPlaying = 1; // start from 1
+    public static GamePlayGUI gamePlayGUI;
 
     // Getter n Setter
 
@@ -82,7 +84,9 @@ public class Engine {
                 Map newMap1 = new Map1("New Game");
                 newCore.setMap(newMap1);
                 GameInfo.restart(newCore);
-                new GameEndGUI(0, true, map.player1);
+
+                Engine.gamePlayGUI.dispose();
+                new GameEndGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode, map.player1);
 
 
                 System.out.println(map.player1.getName() + " Win !");
@@ -94,7 +98,10 @@ public class Engine {
                 newCore.setMap(newMap1);
                 GameInfo.restart(newCore);
 
-                new GameEndGUI(0, true, map.player2);
+                Engine.gamePlayGUI.dispose();
+                new GameEndGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode, map.player2);
+
+
                 System.out.println(map.player2.getName() + " Win !");
                 GamePlayGUI.backgroundLabel.remove(getPlayer1().character);
             }
