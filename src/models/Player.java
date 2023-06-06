@@ -14,7 +14,7 @@ public abstract class Player extends Coordinate implements IMoveable{
     private int default_turns = turns;
     public final JLabel character;
     public JPanel playerInfoPanel;
-    public JLabel turnJLabel;
+    public JLabel turnLabel;
 
 
 
@@ -90,12 +90,47 @@ public abstract class Player extends Coordinate implements IMoveable{
         setCoordinateX(x);
         setCoordinateY(y);
         updateLocation();
+        createPanel();
     }
 
 
     // update location
     public void updateLocation(){
         character.setLocation(getCoordinateX(), getCoordinateY());
+    }
+
+
+    // create panel
+    public void createPanel(){
+        // Panel Player 1
+        playerInfoPanel = new JPanel(new FlowLayout());
+        if (getCoordinateX() < FrameInfo.frameWidth/2){
+            playerInfoPanel.setBounds(0, 75, 150, 200);
+        } else {
+            playerInfoPanel.setBounds(FrameInfo.frameWidth - 150, 75, 150, 200);
+        }
+
+        playerInfoPanel.setBackground(Color.CYAN);
+        playerInfoPanel.setOpaque(true);
+        GamePlayGUI.backgroundLabel.add(playerInfoPanel);
+
+        JLabel player1Header = new JLabel(name);
+        player1Header.setFont(new Font(FrameInfo.fontPath, Font.BOLD, 30));
+        player1Header.setForeground(Color.BLACK);
+        playerInfoPanel.add(player1Header);
+
+        JLabel player1InfoTitleText = new JLabel("Available Turns");
+        player1InfoTitleText.setFont(new Font(FrameInfo.fontPath, Font.TRUETYPE_FONT, 18));
+        player1InfoTitleText.setForeground(Color.BLACK);
+        playerInfoPanel.add(player1InfoTitleText);
+
+        turnLabel = new JLabel(Integer.toString(turns));
+        turnLabel.setFont(new Font(FrameInfo.fontPath, Font.TRUETYPE_FONT, 50));
+        playerInfoPanel.add(turnLabel);
+    }
+
+    public void updatePlayerTurnLabel(){
+        turnLabel.setText(Integer.toString(turns));
     }
 
 }

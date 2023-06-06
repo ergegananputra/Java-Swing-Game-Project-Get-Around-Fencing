@@ -16,10 +16,6 @@ public class GamePlayGUI extends JFrame {
 
     // Attributes
     public static JLabel backgroundLabel;
-    private int defaultP1Turns = 1;
-    private int defaultP2Turns = 1;
-    private int player1Turns = defaultP1Turns;
-    private int player2Turns = defaultP2Turns;
     private JLabel player1Label;
     private JLabel player2Label;
 
@@ -58,63 +54,6 @@ public class GamePlayGUI extends JFrame {
 
         //TODO: ini Map dan Character masih temporary
 
-        // Panel Player 1
-        JPanel player1InfoPanel = new JPanel(new FlowLayout());
-        player1InfoPanel.setBounds(0, 75, 150, 200);
-        player1InfoPanel.setBackground(Color.CYAN);
-//        player1InfoPanel.setOpaque(false);
-        GamePlayGUI.backgroundLabel.add(player1InfoPanel);
-
-        JLabel player1Header = new JLabel("Player 1");
-        player1Header.setFont(new Font("Minecraft", Font.BOLD, 30));
-        player1Header.setForeground(Color.BLACK);
-        player1InfoPanel.add(player1Header);
-
-        JLabel player1InfoTitleText = new JLabel("Available Turns");
-        player1InfoTitleText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 18));
-        player1InfoTitleText.setForeground(Color.BLACK);
-        player1InfoPanel.add(player1InfoTitleText);
-
-        player1Label = new JLabel("1");
-        player1Label.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 50));
-        player1InfoPanel.add(player1Label);
-
-//        JLabel player1TurnJLabel = new JLabel();
-//        player1TurnJLabel.setText(Integer.toString(player1Turns));
-//        player1TurnJLabel.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
-//        player1TurnJLabel.setBackground(Color.RED);
-//        player1TurnJLabel.setForeground(Color.BLACK);
-//        player1InfoPanel.add(player1TurnJLabel);
-
-        // Panel Player 2
-        JPanel player2InfoPanel = new JPanel(new FlowLayout());
-        player2InfoPanel.setBounds(850, 75, 150, 200);
-        player2InfoPanel.setBackground(Color.CYAN);
-//        player1InfoPanel.setOpaque(false);
-        GamePlayGUI.backgroundLabel.add(player2InfoPanel);
-
-        JLabel player2Header = new JLabel("Player 2");
-        player2Header.setFont(new Font("Minecraft", Font.BOLD, 30));
-        player2Header.setForeground(Color.BLACK);
-        player2InfoPanel.add(player2Header);
-
-        JLabel player2InfoTitleText = new JLabel("Available Turns");
-        player2InfoTitleText.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 18));
-        player2InfoTitleText.setForeground(Color.BLACK);
-        player2InfoPanel.add(player2InfoTitleText);
-
-        player2Label = new JLabel("1");
-        player2Label.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 50));
-        player2InfoPanel.add(player2Label);
-
-//        JLabel player2TurnJLabel = new JLabel();
-//        player2TurnJLabel.setText(Integer.toString(player2Turns));
-//        player2TurnJLabel.setFont(new Font("Minecraft", Font.TRUETYPE_FONT, 110));
-//        player2TurnJLabel.setBackground(Color.RED);
-//        player2TurnJLabel.setForeground(Color.BLACK);
-//        player2InfoPanel.add(player2TurnJLabel);
-
-
         // Character
         Spider player1 = new Spider("Player 1");
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
@@ -128,9 +67,6 @@ public class GamePlayGUI extends JFrame {
         Map1 demoMap = new Map1("Demo Map");
         demoMap.addPlayers(player1, player2);
 
-        // Generate Initial random Soups
-//        Soup tes = new Soup("tes", 2, GameInfo.core.map.getTilesRelativeCoorX(2), GameInfo.core.map.getTilesRelativeCoorY(2));
-//        JLabel tes.setBounds(50, 50, FrameInfo.tileSize, FrameInfo.tileSize);
         demoMap.generateRandomSoups();
 
         /**
@@ -159,26 +95,22 @@ public class GamePlayGUI extends JFrame {
                         case KeyEvent.VK_UP -> {
                             GameInfo.core.getPlayer1().goUp();
                             GameInfo.core.getPlayer1().decreaseTurns(1);
-                            player1Turns--;
-                            updatePlayerMoves(player1Label, player1Turns);
+                            GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                         }
                         case KeyEvent.VK_DOWN -> {
                             GameInfo.core.getPlayer1().goDown();
                             GameInfo.core.getPlayer1().decreaseTurns(1);
-                            player1Turns--;
-                            updatePlayerMoves(player1Label, player1Turns);
+                            GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                         }
                         case KeyEvent.VK_LEFT -> {
                             GameInfo.core.getPlayer1().goLeft();
                             GameInfo.core.getPlayer1().decreaseTurns(1);
-                            player1Turns--;
-                            updatePlayerMoves(player1Label, player1Turns);
+                            GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                         }
                         case KeyEvent.VK_RIGHT -> {
                             GameInfo.core.getPlayer1().goRight();
                             GameInfo.core.getPlayer1().decreaseTurns(1);
-                            player1Turns--;
-                            updatePlayerMoves(player1Label, player1Turns);
+                            GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                         }
                         default -> {}
                     }
@@ -195,29 +127,26 @@ public class GamePlayGUI extends JFrame {
                         case KeyEvent.VK_W -> {
                             GameInfo.core.getPlayer2().goUp();
                             GameInfo.core.getPlayer2().decreaseTurns(1);
-                            player2Turns--;
-                            updatePlayerMoves(player2Label, player2Turns);
+                            GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                         }
                         case KeyEvent.VK_S -> {
                             GameInfo.core.getPlayer2().goDown();
                             GameInfo.core.getPlayer2().decreaseTurns(1);
-                            player2Turns--;
-                            updatePlayerMoves(player2Label, player2Turns);
+                            GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                         }
                         case KeyEvent.VK_A -> {
                             GameInfo.core.getPlayer2().goLeft();
                             GameInfo.core.getPlayer2().decreaseTurns(1);
-                            player2Turns--;
-                            updatePlayerMoves(player2Label, player2Turns);
+                            GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                         }
                         case KeyEvent.VK_D -> {
                             GameInfo.core.getPlayer2().goRight();
                             GameInfo.core.getPlayer2().decreaseTurns(1);
-                            player2Turns--;
-                            updatePlayerMoves(player2Label, player2Turns);
+                            GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                         }
                         default -> {}
                     }
+
 
                     GameInfo.core.map.checkStepForSoup(GameInfo.core.getPlayer2());
                     GameInfo.core.getPlayer2().updateLocation();
@@ -251,14 +180,5 @@ public class GamePlayGUI extends JFrame {
         //WARNING: No Edit Zone -- End
 
         setVisible(true);
-    }
-    public void updatePlayerMoves(JLabel label, int moves) {
-        label.setText(Integer.toString(moves));
-        if (player1Turns <= 0 && player2Turns <= 0){
-            player1Turns = 1;
-            player2Turns = 1;
-            updatePlayerMoves(player1Label, player1Turns);
-            updatePlayerMoves(player2Label, player2Turns);
-        }
     }
 }

@@ -30,15 +30,17 @@ public class Engine {
                 if (nowPlaying == 2 && getPlayer2().getTurns() <= 0) {
                     nowPlaying = 1;
                     getPlayer1().setTurns(getPlayer1().getDefault_turns());
+                    GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                     GameInfo.moves++;
                 } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
-                   nowPlaying = 2;
+                    nowPlaying = 2;
                     getPlayer2().setTurns(getPlayer2().getDefault_turns());
+                    GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                     GameInfo.moves++;
                 }
             }
         }
-        if (GameInfo.moves % 10 == 0) {
+        if (GameInfo.moves % 20 == 0) {
             map.generateRandomSoups();
         }
     }
