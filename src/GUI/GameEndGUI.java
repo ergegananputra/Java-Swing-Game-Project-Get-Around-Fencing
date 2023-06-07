@@ -4,56 +4,55 @@ import information.FrameInfo;
 import models.Player;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 public class GameEndGUI extends JFrame {
+    // Attributes
+    private JLabel backgroundLabel;
+    private JLabel playerIcon;
 
     // Constructor
     public GameEndGUI(int preset, boolean debugMode, Player player) {
+        this.playerIcon = player.character;
+        FrameInfo.setUserScreenSetting(preset);
+        FrameInfo.refresh();
+
         setTitle("Lousy Fencing");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(FrameInfo.frameWidth, FrameInfo.frameHeight + 40);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        // Create an outer panel with a BorderLayout
-        JPanel endPane = new JPanel(new BorderLayout(100,100));
-        endPane.setBorder(new EmptyBorder(100,0,150,0)); // Set the padding
-        endPane.setBackground(Color.BLACK);
+        // Load External Font
+        Font minecraftFont = null;
+        try {
+            minecraftFont = Font.createFont(Font.TRUETYPE_FONT, FrameInfo.fontFile);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
 
-        // Create an inner panel to display the image of the winner with a FlowLayout
-        JPanel icon = new JPanel(new FlowLayout());
-        icon.setBackground(Color.BLACK);
-        // Adding the player image to the panel
-        icon.add(player.character);
-        endPane.add(icon, BorderLayout.NORTH);
+        assert minecraftFont != null;
+        Font minecraft = minecraftFont.deriveFont(Font.PLAIN, 60);
 
-        // Create an inner panel to display the name of the winner with a FlowLayout
-        JPanel playerPane = new JPanel(new FlowLayout());
-        playerPane.setBackground(Color.BLACK);
+        // Add background
+        ImageIcon background = new ImageIcon(FrameInfo.gameEnd);
+        backgroundLabel = new JLabel(background);
+        backgroundLabel.setBounds(0,0, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        add(backgroundLabel);
 
-        // Create an inner panel to display restart instruction with a FlowLayout
-        JPanel restartPane = new JPanel(new FlowLayout());
-        restartPane.setBackground(Color.BLACK);
-
-        // Create a label to display the name of the winner
-        JLabel winner = new JLabel(player.getName() + " Win!");
-        winner.setFont(new Font("Arial", Font.BOLD,60));
+        // Displaying the name of the winner
+        JLabel winner = new JLabel(player.getName() + " win!");
+        winner.setFont(minecraft);
         winner.setForeground(Color.WHITE);
-        // Adding it to the panel
-        playerPane.add(winner);
-        endPane.add(playerPane, BorderLayout.CENTER);
+        winner.setBounds(FrameInfo.frameWidth/2 - 190,-200, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        backgroundLabel.add(winner);
 
-        // Create a label for the restart instruction
-        JLabel restart = new JLabel("PRESS ENTER TO RESTART");
-        restart.setFont(new Font("Arial", Font.BOLD,20));
-        restart.setForeground(Color.WHITE);
-        // Adding it to the panel
-        restartPane.add(restart);
-        endPane.add(restartPane, BorderLayout.SOUTH);
+        // Displaying the icon of the winner
+        playerIcon.setBounds(-6,0, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        backgroundLabel.add(playerIcon);
 
         // Add Key Listener
         addKeyListener(new KeyListener() {
@@ -80,8 +79,6 @@ public class GameEndGUI extends JFrame {
 
             }
         });
-
-        add(endPane);
 
         setVisible(true);
     }
