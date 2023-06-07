@@ -47,8 +47,8 @@ public class GameEndGUI extends JFrame {
         JLabel winner = new JLabel(player.getName() + " win!");
         winner.setFont(minecraft);
         winner.setForeground(Color.WHITE);
-        winner.setBounds(FrameInfo.frameWidth/2 - 195,-270, FrameInfo.frameWidth, FrameInfo.frameHeight);
-//        winner.setHorizontalAlignment(SwingConstants.CENTER);
+        winner.setBounds(0,-260, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        winner.setHorizontalAlignment(SwingConstants.CENTER);
         backgroundLabel.add(winner);
 
         // Displaying the icon of the winner
