@@ -17,12 +17,14 @@ public abstract class Player extends Coordinate implements IMoveable{
     public final JLabel character;
     public JPanel playerInfoPanel;
     public JLabel turnLabel;
+    private final JLabel icon;
 
 
 
     // CONSTRUCTORS
     public Player(String outfit){
         this.character = new JLabel(new ImageIcon(outfit));
+        this.icon = new JLabel(new ImageIcon(outfit));
     }
 
 
@@ -116,6 +118,7 @@ public abstract class Player extends Coordinate implements IMoveable{
         Font minecraftFontHeader = minecraftFont.deriveFont(Font.PLAIN, 30);
         Font minecraftInfoTitleText = minecraftFont.deriveFont(Font.PLAIN, 18);
         Font minecraftTurnLabel = minecraftFont.deriveFont(Font.PLAIN, 50);
+        Font minceraftDivider = minecraftFont.deriveFont(Font.PLAIN, 5);
 
         // Panel Player 1
         playerInfoPanel = new JPanel(new FlowLayout());
@@ -130,6 +133,13 @@ public abstract class Player extends Coordinate implements IMoveable{
         panelLabel.setLayout(new FlowLayout());
         GamePlayGUI.backgroundLabel.add(playerInfoPanel);
         playerInfoPanel.add(panelLabel);
+
+        JLabel divider = new JLabel("                                                                ");
+        divider.setFont(minceraftDivider);
+        divider.setForeground(Color.WHITE);
+        panelLabel.add(divider);
+
+        panelLabel.add(icon);
 
         JLabel playerHeader = new JLabel(name);
         playerHeader.setFont(minecraftFontHeader);

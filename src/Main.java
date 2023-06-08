@@ -9,7 +9,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            HomePageMenuGUI gamePlayGUI = new HomePageMenuGUI(2, true);
+            HomePageMenuGUI gamePlayGUI = new HomePageMenuGUI(3, true);
         });
     }
 }

@@ -64,13 +64,13 @@ public class FrameInfo {
 
     // tile size
     private static int getTileSize(){
-        return userScreenSetting > 1? 70 : 50;
+        return 50;
     }
 
 
     // arena size
     private static int getArenaSize(){
-        return userScreenSetting > 1? 840 : 600;
+        return 600;
     }
 
 
