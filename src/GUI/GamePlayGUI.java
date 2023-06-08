@@ -62,7 +62,6 @@ public class GamePlayGUI extends JFrame {
 
         /**
          * Dilarang keras untuk merubah sourcode dibawah ini tanpa izin/diskusi
-         *
          * DAERAH SENSITIF
          */
 
@@ -108,6 +107,7 @@ public class GamePlayGUI extends JFrame {
 
 
                     GameInfo.core.map.checkStepForSoup(GameInfo.core.getPlayer1());
+                    GameInfo.core.map.checkStepForWitherRose(GameInfo.core.getPlayer1());
                     GameInfo.core.getPlayer1().updateLocation();
 
 
@@ -140,6 +140,7 @@ public class GamePlayGUI extends JFrame {
 
 
                     GameInfo.core.map.checkStepForSoup(GameInfo.core.getPlayer2());
+                    GameInfo.core.map.checkStepForWitherRose(GameInfo.core.getPlayer2());
                     GameInfo.core.getPlayer2().updateLocation();
 
                 } else {

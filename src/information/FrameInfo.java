@@ -69,7 +69,7 @@ public class FrameInfo {
 
 
     // arena size
-    private static int getArenaSize(){
+    public static int getArenaSize(){
         return 600;
     }
 

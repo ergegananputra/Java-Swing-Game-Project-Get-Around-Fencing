@@ -18,6 +18,11 @@ public class Map2 extends Map{
     }
 
     @Override
+    public void generateRandomWitherRoses() {
+
+    }
+
+    @Override
     public void generateRandomSoups() {
         // TODO: add soup
     }

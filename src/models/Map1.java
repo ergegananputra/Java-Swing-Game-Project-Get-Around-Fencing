@@ -1,7 +1,7 @@
 package models;
 
 import GUI.GamePlayGUI;
-import information.GameInfo;
+import information.FrameInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +18,108 @@ public class Map1 extends Map{
             new Soup("Beetroots_6", 1, getTilesRelativeCoorX(6), getTilesRelativeCoorY(5)),
             new Soup("Beetroots_7", 1, getTilesRelativeCoorX(6), getTilesRelativeCoorY(6)),
             new Soup("Beetroots_8", 1, getTilesRelativeCoorX(5), getTilesRelativeCoorY(5)),
+    };
+
+    private final WitherRose[] outerWitherRosesPosition = {
+            // left
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(2)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(3)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(4)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(5)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(6)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(7)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(8)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(9)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(0), getTilesRelativeCoorY(11)),
+
+            // right
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(2)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(3)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(4)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(5)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(6)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(7)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(8)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(9)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(11), getTilesRelativeCoorY(11)),
+
+            // top
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(2), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(3), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(4), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(5), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(6), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(7), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(8), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(9), getTilesRelativeCoorY(0)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(0)),
+
+            // bottom
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(2), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(3), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(4), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(5), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(6), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(7), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(8), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(9), getTilesRelativeCoorY(11)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(11)),
+
+    };
+
+    private final WitherRose[] innerWitherRosesPosition = {
+            // left
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(2)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(3)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(4)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(5)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(6)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(7)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(8)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(9)),
+            new WitherRose(getTilesRelativeCoorX(1), getTilesRelativeCoorY(10)),
+
+            // right
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(2)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(3)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(4)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(5)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(6)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(7)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(8)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(9)),
+            new WitherRose(getTilesRelativeCoorX(10), getTilesRelativeCoorY(10)),
+
+            // top
+            new WitherRose(getTilesRelativeCoorX(2), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(3), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(4), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(5), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(6), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(7), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(8), getTilesRelativeCoorY(1)),
+            new WitherRose(getTilesRelativeCoorX(9), getTilesRelativeCoorY(1)),
+
+            // bottom
+            new WitherRose(getTilesRelativeCoorX(2), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(3), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(4), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(5), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(6), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(7), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(8), getTilesRelativeCoorY(10)),
+            new WitherRose(getTilesRelativeCoorX(9), getTilesRelativeCoorY(10)),
+
     };
 
 
@@ -64,6 +166,34 @@ public class Map1 extends Map{
     }
 
 
+
+    // Generate Random Wither Roses
+    @Override
+    public void generateRandomWitherRoses() {
+        if (getWitherRoses().size() < (FrameInfo.getArenaSize()/FrameInfo.tileSize - 1) * 4 ){
+            ArrayList<WitherRose> availableRoses = new ArrayList<>(Arrays.asList(outerWitherRosesPosition));
+            availableRoses.removeAll(getWitherRoses());
+            if (!availableRoses.isEmpty()){
+                int index = ThreadLocalRandom.current().nextInt(0, availableRoses.size());
+                WitherRose witherRose = availableRoses.get(index);
+                addWitherRoses(witherRose);
+                GamePlayGUI.backgroundLabel.add(witherRose.rose);
+            }
+        } else {
+            ArrayList<WitherRose> availableRoses = new ArrayList<>(Arrays.asList(innerWitherRosesPosition));
+            availableRoses.removeAll(getWitherRoses());
+            if (!availableRoses.isEmpty()){
+                int index = ThreadLocalRandom.current().nextInt(0, availableRoses.size());
+                WitherRose witherRose = availableRoses.get(index);
+                addWitherRoses(witherRose);
+                GamePlayGUI.backgroundLabel.add(witherRose.rose);
+            }
+        }
+        GamePlayGUI.backgroundLabel.repaint();
+
+    }
+
+
     // Generate Random soup
 
     @Override
@@ -79,4 +209,7 @@ public class Map1 extends Map{
         }
         GamePlayGUI.backgroundLabel.repaint();
     }
+
+
+
 }

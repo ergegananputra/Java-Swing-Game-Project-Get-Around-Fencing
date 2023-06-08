@@ -35,6 +35,7 @@ public class Engine {
                     GameInfo.core.getPlayer1().updatePlayerTurnLabel();
                     GameInfo.moves++;
                     generateRandomSoup();
+                    generateRandomWitherRose();
 
                 } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
                     nowPlaying = 2;
@@ -42,6 +43,7 @@ public class Engine {
                     GameInfo.core.getPlayer2().updatePlayerTurnLabel();
                     GameInfo.moves++;
                     generateRandomSoup();
+                    generateRandomWitherRose();
                 }
 
 
@@ -77,7 +79,8 @@ public class Engine {
 
     public void checkIsThereAWinner(){
         if (getPlayer1().getCoordinateX() == getPlayer2().getCoordinateX()
-                && getPlayer1().getCoordinateY() == getPlayer2().getCoordinateY()){
+                && getPlayer1().getCoordinateY() == getPlayer2().getCoordinateY()
+                || map.getSomeOneStepWitherRose()){
             GameInfo.isGameEnd = true;
 
             // TODO: Delete sout if GUI already implemented!
@@ -115,6 +118,12 @@ public class Engine {
     private void generateRandomSoup(){
         if (GameInfo.moves % 20 == 0) {
             map.generateRandomSoups();
+        }
+    }
+
+    private void generateRandomWitherRose(){
+        if (GameInfo.moves > 50 && GameInfo.moves % 2 == 1){
+            map.generateRandomWitherRoses();
         }
     }
 

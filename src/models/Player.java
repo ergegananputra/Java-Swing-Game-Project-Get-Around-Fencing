@@ -1,11 +1,9 @@
 package models;
 import GUI.GamePlayGUI;
 import information.FrameInfo;
-import information.GameInfo;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 public abstract class Player extends Coordinate implements IMoveable{

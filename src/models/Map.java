@@ -9,17 +9,21 @@ import java.util.ArrayList;
 public abstract class Map {
     // ATTRIBUTES
     private String name;
-    private ArrayList<Obstacle> obstacles;
-    private ArrayList<Soup> soups;
+    private final ArrayList<Obstacle> obstacles;
+    private final ArrayList<Soup> soups;
+    private final ArrayList<WitherRose> witherRoses;
     public Player player1;
     public Player player2;
+    private boolean someOneStepWitherRose = false;
 
 
 
     // CONSTRUCTOR
     public Map(String mapName){
+        setName(mapName);
         obstacles = new ArrayList<>();
         soups = new ArrayList<>();
+        witherRoses = new ArrayList<>();
         initializeObstacle();
     }
 
@@ -62,10 +66,41 @@ public abstract class Map {
     }
 
     protected abstract void initializeObstacle();
-    public abstract void generateRandomSoups();
 
+    // wither rose
+    public abstract void generateRandomWitherRoses();
+
+    public ArrayList<WitherRose> getWitherRoses(){
+        return witherRoses;
+    }
+
+    public void addWitherRoses(WitherRose witherRose){
+        witherRoses.add(witherRose);
+    }
+
+    public boolean isWitherRose(int x, int y){
+        for (WitherRose witherRose : witherRoses) {
+            if(witherRose.isOnWitherRose(x,y)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void checkStepForWitherRose(Player player){
+        if(isWitherRose(player.getCoordinateX(), player.getCoordinateY())){
+            someOneStepWitherRose = true;
+            GameInfo.core.nextNowPlaying();
+        }
+    }
+
+    public boolean getSomeOneStepWitherRose(){
+        return someOneStepWitherRose;
+    }
 
     // soups
+    public abstract void generateRandomSoups();
+
     public ArrayList<Soup> getSoups() {
         return soups;
     }

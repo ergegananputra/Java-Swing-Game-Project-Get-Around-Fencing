@@ -11,8 +11,8 @@ import java.io.IOException;
 
 public class GameEndGUI extends JFrame {
     // Attributes
-    private JLabel backgroundLabel;
-    private JLabel playerIcon;
+    private final JLabel backgroundLabel;
+    private final JLabel playerIcon;
 
     // Constructor
     public GameEndGUI(int preset, boolean debugMode, Player player) {
@@ -65,13 +65,9 @@ public class GameEndGUI extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
-                switch (keyCode) {
-                    case KeyEvent.VK_ENTER:
-                        dispose();
-                        new HomePageMenuGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode);
-                        break;
-                    default:
-                        break;
+                if (keyCode == KeyEvent.VK_ENTER) {
+                    dispose();
+                    new HomePageMenuGUI(FrameInfo.getUserScreenSetting(), debugMode);
                 }
             }
 

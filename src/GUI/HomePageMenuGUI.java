@@ -8,9 +8,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class HomePageMenuGUI extends JFrame {
-    private JLabel backgroundLabel;
-    private JLabel selectLabel1;
-    private JLabel selectLabel2;
+    private final JLabel backgroundLabel;
+    private final JLabel selectLabel1;
+    private final JLabel selectLabel2;
     private int select1Pos;
     private int select2Pos;
 

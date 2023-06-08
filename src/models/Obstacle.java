@@ -1,6 +1,5 @@
 package models;
 
-import information.FrameInfo;
 
 public class Obstacle extends Coordinate{
 
