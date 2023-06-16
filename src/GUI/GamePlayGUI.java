@@ -143,8 +143,6 @@ public class GamePlayGUI extends JFrame {
                     GameInfo.core.map.checkStepForWitherRose(GameInfo.core.getPlayer2());
                     GameInfo.core.getPlayer2().updateLocation();
 
-                } else {
-
                 }
 
 
@@ -156,9 +154,13 @@ public class GamePlayGUI extends JFrame {
 
 
                 if (degbugMode){
-                    LOGGER.info("Sekarang giliran : " + GameInfo.core.getNowPlaying() + ", Turns [ " + GameInfo.core.getPlayer1().getTurns() + " , " + GameInfo.core.getPlayer2().getTurns() + " ]");
-                    LOGGER.info("Player 1 : " + GameInfo.core.getPlayer1().getCoordinateX() + ", " + GameInfo.core.getPlayer1().getCoordinateY() + "\n" +
-                                     "Player 2 : " + GameInfo.core.getPlayer2().getCoordinateX() + ", " + GameInfo.core.getPlayer2().getCoordinateY());
+                    try {
+                        LOGGER.info("Sekarang giliran : " + GameInfo.core.getNowPlaying() + ", Turns [ " + GameInfo.core.getPlayer1().getTurns() + " , " + GameInfo.core.getPlayer2().getTurns() + " ]");
+                        LOGGER.info("Player 1 : " + GameInfo.core.getPlayer1().getCoordinateX() + ", " + GameInfo.core.getPlayer1().getCoordinateY() + "\n" +
+                                "Player 2 : " + GameInfo.core.getPlayer2().getCoordinateX() + ", " + GameInfo.core.getPlayer2().getCoordinateY());
+                    } catch (Exception ex) {
+                        LOGGER.info("Game is End [Under Control Error]: \n" + ex + "\n [Under Control Error -- Game End Effect]");
+                    }
                 }
 
             }

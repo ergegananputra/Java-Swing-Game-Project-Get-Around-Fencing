@@ -27,26 +27,32 @@ public class Engine {
     }
 
     public void nextNowPlaying(){
-        if (getPlayer1().getTurns() <= 0 || getPlayer2().getTurns() <= 0){
-            if (!GameInfo.isGameEnd) {
-                if (nowPlaying == 2 && getPlayer2().getTurns() <= 0) {
-                    nowPlaying = 1;
-                    getPlayer1().setTurns(getPlayer1().getDefault_turns());
-                    GameInfo.core.getPlayer1().updatePlayerTurnLabel();
-                    GameInfo.moves++;
-                    generateRandomSoup();
-                    generateRandomWitherRose();
+        try {
+            if (getPlayer1().getTurns() <= 0 || getPlayer2().getTurns() <= 0){
+                if (!GameInfo.isGameEnd) {
+                    if (nowPlaying == 2 && getPlayer2().getTurns() <= 0) {
+                        nowPlaying = 1;
+                        getPlayer1().setTurns(getPlayer1().getDefault_turns());
+                        GameInfo.core.getPlayer1().updatePlayerTurnLabel();
+                        GameInfo.moves++;
+                        generateRandomSoup();
+                        generateRandomWitherRose();
 
-                } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
-                    nowPlaying = 2;
-                    getPlayer2().setTurns(getPlayer2().getDefault_turns());
-                    GameInfo.core.getPlayer2().updatePlayerTurnLabel();
-                    GameInfo.moves++;
-                    generateRandomSoup();
-                    generateRandomWitherRose();
+                    } else if (nowPlaying == 1 && getPlayer1().getTurns() <= 0) {
+                        nowPlaying = 2;
+                        getPlayer2().setTurns(getPlayer2().getDefault_turns());
+                        GameInfo.core.getPlayer2().updatePlayerTurnLabel();
+                        GameInfo.moves++;
+                        generateRandomSoup();
+                        generateRandomWitherRose();
+                    }
+
+
                 }
-
-
+            }
+        } catch (Exception e) {
+            if (GamePlayGUI.debugMode){
+                LOGGER.info("Game is End [Under Control Error]: \n" + e + "\n [Under Control Error]");
             }
         }
 
@@ -95,7 +101,9 @@ public class Engine {
                 new GameEndGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode, map.player1);
 
 
-                System.out.println(map.player1.getName() + " Win !");
+                if (GamePlayGUI.debugMode){
+                    LOGGER.info(map.player1.getName() + " Win !");
+                }
                 GamePlayGUI.backgroundLabel.remove(getPlayer2().character);
             } else {
                 // TODO : ini nanti dimasukkan ke start
@@ -107,8 +115,9 @@ public class Engine {
                 Engine.gamePlayGUI.dispose();
                 new GameEndGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode, map.player2);
 
-
-                System.out.println(map.player2.getName() + " Win !");
+                if (GamePlayGUI.debugMode){
+                    LOGGER.info(map.player2.getName() + " Win !");
+                }
                 GamePlayGUI.backgroundLabel.remove(getPlayer1().character);
             }
 
