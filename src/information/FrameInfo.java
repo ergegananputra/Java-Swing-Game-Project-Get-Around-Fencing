@@ -30,6 +30,7 @@ public class FrameInfo {
 
     public static final File fontFile = new File("src/library/font/Minecraft.ttf");
     public static final String outfitSelection = "src/assets/homePageMenu/OutfitSelection.png";
+    public static final String coverPane = "src/assets/homePageMenu/coverPane.png";
 
 
     // DERIVATIVE VARIABLE

@@ -4,8 +4,10 @@ import core.Engine;
 import information.FrameInfo;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 
 public class HomePageMenuGUI extends JFrame {
     private final JLabel backgroundLabel;
@@ -13,6 +15,8 @@ public class HomePageMenuGUI extends JFrame {
     private final JLabel selectLabel2;
     private int select1Pos;
     private int select2Pos;
+    private String player1Name;
+    private String player2Name;
 
     public HomePageMenuGUI(int preset, boolean debugMode) {
         FrameInfo.setUserScreenSetting(preset);
@@ -29,11 +33,28 @@ public class HomePageMenuGUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
+        // Load External Font
+        Font minecraftFont = null;
+        try {
+            minecraftFont = Font.createFont(Font.TRUETYPE_FONT, FrameInfo.fontFile);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+
+        assert minecraftFont != null;
+        Font minecraft = minecraftFont.deriveFont(Font.PLAIN, 28);
+
         // add background
         ImageIcon background = new ImageIcon(FrameInfo.homePageMenu);
         backgroundLabel = new JLabel(background);
-        backgroundLabel.setBounds(0, 0, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        backgroundLabel.setBounds(0, 100, FrameInfo.frameWidth, FrameInfo.frameHeight);
         add(backgroundLabel);
+
+        // add cover pane
+        ImageIcon cover = new ImageIcon(FrameInfo.coverPane);
+        JLabel coverLabel = new JLabel(cover);
+        coverLabel.setBounds(0, 20, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        backgroundLabel.add(coverLabel);
 
         // add selection 1
         ImageIcon select1 = new ImageIcon(FrameInfo.outfitSelection);
@@ -46,9 +67,15 @@ public class HomePageMenuGUI extends JFrame {
         selectLabel2 = new JLabel(select2);
         selectLabel2.setBounds(select2Pos, 50, FrameInfo.frameWidth, FrameInfo.frameHeight);
         backgroundLabel.add(selectLabel2);
-        
-        //TODO: set outfit
 
+        // add action label
+        JLabel actionLabel = new JLabel("Enter player 1 name");
+        actionLabel.setFont(minecraft);
+        actionLabel.setForeground(Color.decode("#C6C6C6"));
+        actionLabel.setBounds(-10, -230, FrameInfo.frameWidth, FrameInfo.frameHeight);
+        actionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        backgroundLabel.add(actionLabel);
+        
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -80,7 +107,7 @@ public class HomePageMenuGUI extends JFrame {
                             default -> player2Character = 0;
                         }
 
-                        Engine.gamePlayGUI = new GamePlayGUI(preset, debugMode, player1Character, player2Character);
+                        Engine.gamePlayGUI = new GamePlayGUI(preset, debugMode, player1Character, player2Character, player1Name, player2Name);
                         break;
 
                     case KeyEvent.VK_W:
@@ -110,7 +137,7 @@ public class HomePageMenuGUI extends JFrame {
                         break;
 
                     default:
-                        break;
+                        System.out.println(player1Name);
                 }
                 selectLabel1.setLocation(select1Pos, selectLabel1.getY());
                 selectLabel2.setLocation(select2Pos, selectLabel2.getY());
@@ -124,5 +151,56 @@ public class HomePageMenuGUI extends JFrame {
         });
 
         setVisible(true);
+
+        // name input
+        // player 1 name
+        new NameInputGUI(new NameInputCallback() {
+            @Override
+            public void onNameInput(String name) {
+                player1Name = name;
+
+                // set text action label
+                actionLabel.setText("Enter player 2 name");
+                backgroundLabel.add(actionLabel);
+                setVisible(true);
+
+                // player 2 name
+                new NameInputGUI(new NameInputCallback() {
+                    @Override
+                    public void onNameInput(String name) {
+                    player2Name = name;
+
+                    // remove cover pane
+                    coverLabel.setIcon(null);
+
+                    // set name label for both player
+                    JLabel player1NameLabel = new JLabel(player1Name);
+                    player1NameLabel.setFont(minecraft);
+                    player1NameLabel.setForeground(Color.WHITE);
+                    player1NameLabel.setBounds(-240, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
+                    player1NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    backgroundLabel.add(player1NameLabel);
+
+                    JLabel player2NameLabel = new JLabel(player2Name);
+                    player2NameLabel.setFont(minecraft);
+                    player2NameLabel.setForeground(Color.WHITE);
+                    player2NameLabel.setBounds(220, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
+                    player2NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                    backgroundLabel.add(player2NameLabel);
+
+                    // set text action label
+                    actionLabel.setText("Select your outfit");
+                    backgroundLabel.add(actionLabel);
+                    
+                    setVisible(true);
+                    }
+                });
+            }
+        });
+        
+    }
+
+    interface NameInputCallback {
+        void onNameInput(String name);
     }
 }

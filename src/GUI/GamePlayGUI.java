@@ -18,12 +18,15 @@ public class GamePlayGUI extends JFrame {
     // Attributes
     public static JLabel backgroundLabel;
     private Map map;
-
+    String player1Name;
+    String player2Name;
 
 
     // Constructor
-    public GamePlayGUI(int preset, boolean degbugMode, int player1Character, int player2Character) {
+    public GamePlayGUI(int preset, boolean degbugMode, int player1Character, int player2Character, String player1Name, String player2Name) {
         GamePlayGUI.debugMode = degbugMode;
+        this.player1Name = player1Name; 
+        this.player2Name = player2Name; 
 
         // Set User Screen Setting Preference
         FrameInfo.setUserScreenSetting(preset);
@@ -190,8 +193,8 @@ public class GamePlayGUI extends JFrame {
 
     void selectCharacterPlayers(int presetP1, int presetP2){
         // Character
-        Player player1 = getCharacterFromPreset(presetP1, "Player 1");
-        Player player2 = getCharacterFromPreset(presetP2, "Player 2");
+        Player player1 = getCharacterFromPreset(presetP1, player1Name);
+        Player player2 = getCharacterFromPreset(presetP2, player2Name);
 
         player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
         player2.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
