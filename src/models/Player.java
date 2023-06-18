@@ -63,13 +63,6 @@ public abstract class Player extends Coordinate implements IMoveable{
         }
     }
 
-    public void addTurns(int turns) {
-        if(turns > 0){
-            this.turns += turns;
-            default_turns = this.turns;
-        }
-    }
-
 
     // default turns
 
@@ -103,7 +96,7 @@ public abstract class Player extends Coordinate implements IMoveable{
 
 
     // create panel
-    public void createPanel(){
+    public void createPanel() {
         // Load External Font
         Font minecraftFont = null;
         try {
@@ -116,7 +109,6 @@ public abstract class Player extends Coordinate implements IMoveable{
         Font minecraftFontHeader = minecraftFont.deriveFont(Font.PLAIN, 30);
         Font minecraftInfoTitleText = minecraftFont.deriveFont(Font.PLAIN, 18);
         Font minecraftTurnLabel = minecraftFont.deriveFont(Font.PLAIN, 50);
-        Font minceraftDivider = minecraftFont.deriveFont(Font.PLAIN, 5);
 
         // Panel Player 1
         playerInfoPanel = new JPanel(new FlowLayout());
@@ -132,12 +124,21 @@ public abstract class Player extends Coordinate implements IMoveable{
         GamePlayGUI.backgroundLabel.add(playerInfoPanel);
         playerInfoPanel.add(panelLabel);
 
-        JLabel divider = new JLabel("                                                                ");
-        divider.setFont(minceraftDivider);
-        divider.setForeground(Color.WHITE);
+        JLabel divider = new JLabel();
+        divider.setPreferredSize(new Dimension(playerInfoPanel.getWidth(), 5));
+        divider.setOpaque(true);
+        divider.setBackground(new Color(0, 0, 0, 0));
         panelLabel.add(divider);
 
         panelLabel.add(icon);
+
+        JLabel divider_2 = new JLabel();
+        divider_2.setPreferredSize(new Dimension(playerInfoPanel.getWidth(), 5));
+        divider_2.setOpaque(true);
+        divider_2.setBackground(new Color(0, 0, 0, 0));
+        panelLabel.add(divider_2);
+
+
 
         JLabel playerHeader = new JLabel(name);
         playerHeader.setFont(minecraftFontHeader);

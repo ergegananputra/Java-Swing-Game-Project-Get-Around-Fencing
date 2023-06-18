@@ -10,19 +10,21 @@ import java.awt.event.*;
 import java.util.logging.*;
 
 public class GamePlayGUI extends JFrame {
-    // Developer Atributes
+    // DEVELOPER ATTRIBUTES
     private static final Logger LOGGER = Logger.getLogger(GamePlayGUI.class.getName());
     public  static boolean debugMode;
 
 
-    // Attributes
+
+    // ATTRIBUTES
     public static JLabel backgroundLabel;
     private Map map;
     String player1Name;
     String player2Name;
 
 
-    // Constructor
+
+    // CONSTRUCTORS
     public GamePlayGUI(int preset, boolean degbugMode, int player1Character, int player2Character, String player1Name, String player2Name) {
         GamePlayGUI.debugMode = degbugMode;
         this.player1Name = player1Name; 
@@ -63,9 +65,9 @@ public class GamePlayGUI extends JFrame {
 
         selectCharacterPlayers(player1Character, player2Character);
 
-        /**
-         * Dilarang keras untuk merubah sourcode dibawah ini tanpa izin/diskusi
-         * DAERAH SENSITIF
+        /*
+          Dilarang keras untuk merubah sourcode dibawah ini tanpa izin/diskusi
+          DAERAH SENSITIF
          */
 
         //WARNING: No Edit Zone -- Start
@@ -186,7 +188,12 @@ public class GamePlayGUI extends JFrame {
             case 1 -> character = new Pig(name);
             case 2 -> character = new Sheep(name);
             case 3 -> character = new Spider(name);
-            default -> character = new Spider(name);
+            default -> {
+                character = new Spider(name);
+                if(GamePlayGUI.debugMode){
+                    LOGGER.info("Anomaly in Player Icon Selection. Default Spider Icon Packs");
+                }
+            }
         }
         return character;
     }

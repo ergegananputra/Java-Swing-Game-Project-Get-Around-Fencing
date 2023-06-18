@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class HomePageMenuGUI extends JFrame {
+    // ATTRIBUTES
     private final JLabel backgroundLabel;
     private final JLabel selectLabel1;
     private final JLabel selectLabel2;
@@ -18,6 +20,9 @@ public class HomePageMenuGUI extends JFrame {
     private String player1Name;
     private String player2Name;
 
+
+
+    // CONSTRUCTORS
     public HomePageMenuGUI(int preset, boolean debugMode) {
         FrameInfo.setUserScreenSetting(preset);
         FrameInfo.refresh();
@@ -86,58 +91,45 @@ public class HomePageMenuGUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
                 switch (keyCode) {
-                    case KeyEvent.VK_ENTER:
+                    case KeyEvent.VK_ENTER -> {
                         dispose();
-
                         int player1Character;
-                        switch (select2Pos){
+                        switch (select2Pos) {
                             case 100 -> player1Character = 0;
                             case 185 -> player1Character = 1;
                             case 270 -> player1Character = 2;
                             case 355 -> player1Character = 3;
-                            default -> player1Character = 0;
+                            default -> {
+                                player1Character = 0;
+                                if(debugMode){
+                                    Logger.getLogger("Home Page Menu, Character Selection").info("Anomaly in Character Selection. Pos Selection default to 0");
+                                }
+                            }
                         }
-
                         int player2Character;
-                        switch (select1Pos){
+                        switch (select1Pos) {
                             case -370 -> player2Character = 0;
                             case -285 -> player2Character = 1;
                             case -200 -> player2Character = 2;
                             case -115 -> player2Character = 3;
-                            default -> player2Character = 0;
+                            default -> {
+                                player2Character = 0;
+                                if(debugMode){
+                                    Logger.getLogger("Home Page Menu, Character Selection").info("Anomaly in Character Selection. Pos Selection default to 0");
+                                }
+                            }
                         }
-
                         Engine.gamePlayGUI = new GamePlayGUI(preset, debugMode, player1Character, player2Character, player1Name, player2Name);
-                        break;
-
-                    case KeyEvent.VK_W:
-                        select1Pos = -370;
-                        break;
-                    case KeyEvent.VK_A:
-                        select1Pos = -285;
-                        break;
-                    case KeyEvent.VK_S:
-                        select1Pos = -200;
-                        break;
-                    case KeyEvent.VK_D:
-                        select1Pos = -115;
-                        break;
-
-                    case KeyEvent.VK_RIGHT:
-                        select2Pos = 355;
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        select2Pos = 270;
-                        break;
-                    case KeyEvent.VK_LEFT:
-                        select2Pos = 185;
-                        break;
-                    case KeyEvent.VK_UP:
-                        select2Pos = 100;
-                        break;
-
-                    default:
-                        System.out.println(player1Name);
+                    }
+                    case KeyEvent.VK_W -> select1Pos = -370;
+                    case KeyEvent.VK_A -> select1Pos = -285;
+                    case KeyEvent.VK_S -> select1Pos = -200;
+                    case KeyEvent.VK_D -> select1Pos = -115;
+                    case KeyEvent.VK_RIGHT -> select2Pos = 355;
+                    case KeyEvent.VK_DOWN -> select2Pos = 270;
+                    case KeyEvent.VK_LEFT -> select2Pos = 185;
+                    case KeyEvent.VK_UP -> select2Pos = 100;
+                    default -> System.out.println(player1Name);
                 }
                 selectLabel1.setLocation(select1Pos, selectLabel1.getY());
                 selectLabel2.setLocation(select2Pos, selectLabel2.getY());
@@ -154,52 +146,51 @@ public class HomePageMenuGUI extends JFrame {
 
         // name input
         // player 1 name
-        new NameInputGUI(new NameInputCallback() {
-            @Override
-            public void onNameInput(String name) {
-                player1Name = name;
+        new NameInputGUI(name -> {
+            player1Name = name;
+
+            // set text action label
+            actionLabel.setText("Enter player 2 name");
+            backgroundLabel.add(actionLabel);
+            setVisible(true);
+
+            // player 2 name
+            new NameInputGUI(new NameInputCallback() {
+                @Override
+                public void onNameInput(String name) {
+                player2Name = name;
+
+                // remove cover pane
+                coverLabel.setIcon(null);
+
+                // set name label for both player
+                JLabel player1NameLabel = new JLabel(player1Name);
+                player1NameLabel.setFont(minecraft);
+                player1NameLabel.setForeground(Color.WHITE);
+                player1NameLabel.setBounds(-240, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
+                player1NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                backgroundLabel.add(player1NameLabel);
+
+                JLabel player2NameLabel = new JLabel(player2Name);
+                player2NameLabel.setFont(minecraft);
+                player2NameLabel.setForeground(Color.WHITE);
+                player2NameLabel.setBounds(220, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
+                player2NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                backgroundLabel.add(player2NameLabel);
 
                 // set text action label
-                actionLabel.setText("Enter player 2 name");
+                actionLabel.setText("Select your outfit");
                 backgroundLabel.add(actionLabel);
+
                 setVisible(true);
-
-                // player 2 name
-                new NameInputGUI(new NameInputCallback() {
-                    @Override
-                    public void onNameInput(String name) {
-                    player2Name = name;
-
-                    // remove cover pane
-                    coverLabel.setIcon(null);
-
-                    // set name label for both player
-                    JLabel player1NameLabel = new JLabel(player1Name);
-                    player1NameLabel.setFont(minecraft);
-                    player1NameLabel.setForeground(Color.WHITE);
-                    player1NameLabel.setBounds(-240, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
-                    player1NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                    backgroundLabel.add(player1NameLabel);
-
-                    JLabel player2NameLabel = new JLabel(player2Name);
-                    player2NameLabel.setFont(minecraft);
-                    player2NameLabel.setForeground(Color.WHITE);
-                    player2NameLabel.setBounds(220, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
-                    player2NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                    backgroundLabel.add(player2NameLabel);
-
-                    // set text action label
-                    actionLabel.setText("Select your outfit");
-                    backgroundLabel.add(actionLabel);
-                    
-                    setVisible(true);
-                    }
-                });
-            }
+                }
+            });
         });
         
     }
 
+
+    // INNER CLASS
     interface NameInputCallback {
         void onNameInput(String name);
     }

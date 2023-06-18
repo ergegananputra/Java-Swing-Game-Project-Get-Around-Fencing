@@ -10,13 +10,11 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class GameEndGUI extends JFrame {
-    // Attributes
-    private final JLabel backgroundLabel;
-    private final JLabel playerIcon;
 
-    // Constructor
+
+    // CONSTRUCTORS
     public GameEndGUI(int preset, boolean debugMode, Player player) {
-        this.playerIcon = player.character;
+        JLabel playerIcon = player.character;
         FrameInfo.setUserScreenSetting(preset);
         FrameInfo.refresh();
 
@@ -39,7 +37,8 @@ public class GameEndGUI extends JFrame {
 
         // Add background
         ImageIcon background = new ImageIcon(FrameInfo.gameEnd);
-        backgroundLabel = new JLabel(background);
+        // ATTRIBUTES
+        JLabel backgroundLabel = new JLabel(background);
         backgroundLabel.setBounds(0,0, FrameInfo.frameWidth, FrameInfo.frameHeight);
         add(backgroundLabel);
 

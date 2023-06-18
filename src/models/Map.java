@@ -48,10 +48,6 @@ public abstract class Map {
 
 
     // obstacles
-    public ArrayList<Obstacle> getObstacles() {
-        // TODO: Edit!
-        return obstacles;
-    }
 
     public void addObstacles(Obstacle obstacle){
         obstacles.add(obstacle);
@@ -150,14 +146,6 @@ public abstract class Map {
 
 
     // METHODS
-
-
-    // reset map
-    public void resetMap(){
-        obstacles.clear();
-        soups.clear();
-        initializeObstacle();
-    }
 
 
     // Tiles Relative Coordinate

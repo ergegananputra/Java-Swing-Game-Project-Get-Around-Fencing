@@ -9,7 +9,6 @@ public class GameInfo {
     public static Engine core;
 
 
-    public static void playerTurnsUpdate(){}
     public static void restart(Engine core){
         isGameEnd = false;
         moves = 0;

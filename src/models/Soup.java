@@ -57,12 +57,6 @@ public class Soup extends Coordinate{
     }
 
 
-    // outfit
-    public static String getOutfit() {
-        return OUTFIT;
-    }
-
-
 
     // METHODS
 

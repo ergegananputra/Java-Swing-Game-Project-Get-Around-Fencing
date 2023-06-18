@@ -14,18 +14,23 @@ public class Engine {
     // Developer
     private static final Logger LOGGER = Logger.getLogger(GamePlayGUI.class.getName());
 
-    // Atributes
+    // ATTRIBUTES
     public Map map;
     private int nowPlaying = 1; // start from 1
     public static GamePlayGUI gamePlayGUI;
 
-    // Getter n Setter
 
-    // now Playing
+
+    // GETTER & SETTER
+
+
+    // Now Playing
     public int getNowPlaying() {
         return nowPlaying;
     }
 
+
+    // Next Now Playing
     public void nextNowPlaying(){
         try {
             if (getPlayer1().getTurns() <= 0 || getPlayer2().getTurns() <= 0){
@@ -58,7 +63,9 @@ public class Engine {
 
     }
 
-    // Methods
+
+
+    // METHODS
     public Player getPlayer1() {
         return map.player1;
     }
@@ -72,12 +79,13 @@ public class Engine {
      * sehingga dibuat demikian
      * xxx.setMap(objek_dengan_kelas_map1)
      *
-     *
+     * <p>
      * WARNING!
      * pastikan map tersebut telah diinisiasi dengan:
      * - initializeObstacle()
      * agar daerah terlarang(obstacle) muncul sebagai
      * constraint
+     * </p>
     */
     public void setMap(Map map){
         this.map = map;
@@ -124,12 +132,16 @@ public class Engine {
         }
     }
 
+
+    // Generate Random Soup
     private void generateRandomSoup(){
         if (GameInfo.moves % 20 == 0) {
             map.generateRandomSoups();
         }
     }
 
+
+    // Generate Random Wither Rose
     private void generateRandomWitherRose(){
         if (GameInfo.moves > 50 && GameInfo.moves % 2 == 1){
             map.generateRandomWitherRoses();

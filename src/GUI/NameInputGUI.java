@@ -11,7 +11,6 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class NameInputGUI extends JFrame {
-    private HomePageMenuGUI.NameInputCallback callback;
     JTextField textField;
     private String playerName;
 
@@ -59,14 +58,10 @@ public class NameInputGUI extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
-                switch (keyCode) {
-                    case KeyEvent.VK_ENTER -> {
-                        playerName = textField.getText();
-                        callback.onNameInput(playerName);
-                        dispose();
-                        break;
-                    }
-                    default -> {}
+                if (keyCode == KeyEvent.VK_ENTER) {
+                    playerName = textField.getText();
+                    callback.onNameInput(playerName);
+                    dispose();
                 }
             }
 
@@ -80,7 +75,4 @@ public class NameInputGUI extends JFrame {
         setVisible(true);
     }
 
-    public String getPlayerName() {
-        return playerName;
-    }
 }
