@@ -2,6 +2,7 @@ package models;
 
 import information.FrameInfo;
 import information.GameInfo;
+import information.SoundInfo;
 
 public class PlayerPhysic extends  Player implements IMoveable{
 
@@ -19,6 +20,7 @@ public class PlayerPhysic extends  Player implements IMoveable{
     public void goUp() {
         if (!GameInfo.core.map.isObstacle(getCoordinateX(), getCoordinateY() - FrameInfo.tileSize)){
             decrementY(FrameInfo.tileSize);
+            SoundInfo.playRandomFootstep();
         }
     }
 
@@ -26,6 +28,7 @@ public class PlayerPhysic extends  Player implements IMoveable{
     public void goDown() {
         if (!GameInfo.core.map.isObstacle(getCoordinateX(), getCoordinateY() + FrameInfo.tileSize)){
             incrementY(FrameInfo.tileSize);
+            SoundInfo.playRandomFootstep();
         }
     }
 
@@ -33,6 +36,7 @@ public class PlayerPhysic extends  Player implements IMoveable{
     public void goLeft() {
         if (!GameInfo.core.map.isObstacle(getCoordinateX() - FrameInfo.tileSize, getCoordinateY())){
             decrementX(FrameInfo.tileSize);
+            SoundInfo.playRandomFootstep();
         }
     }
 
@@ -40,6 +44,7 @@ public class PlayerPhysic extends  Player implements IMoveable{
     public void goRight() {
         if (!GameInfo.core.map.isObstacle(getCoordinateX() + FrameInfo.tileSize, getCoordinateY())){
             incrementX(FrameInfo.tileSize);
+            SoundInfo.playRandomFootstep();
         }
     }
 }
