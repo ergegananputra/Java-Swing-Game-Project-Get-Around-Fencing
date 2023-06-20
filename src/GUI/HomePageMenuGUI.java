@@ -173,14 +173,14 @@ public class HomePageMenuGUI extends JFrame {
                 JLabel player1NameLabel = new JLabel(player1Name);
                 player1NameLabel.setFont(minecraft);
                 player1NameLabel.setForeground(Color.WHITE);
-                player1NameLabel.setBounds(-240, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
+                player1NameLabel.setBounds(220, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
                 player1NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 backgroundLabel.add(player1NameLabel);
 
                 JLabel player2NameLabel = new JLabel(player2Name);
                 player2NameLabel.setFont(minecraft);
                 player2NameLabel.setForeground(Color.WHITE);
-                player2NameLabel.setBounds(220, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
+                player2NameLabel.setBounds(-240, -120, FrameInfo.frameWidth, FrameInfo.frameHeight);
                 player2NameLabel.setHorizontalAlignment(SwingConstants.CENTER);
                 backgroundLabel.add(player2NameLabel);
 

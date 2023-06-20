@@ -114,7 +114,7 @@ public abstract class Player extends Coordinate implements IMoveable{
         Font minecraftInfoTitleText = minecraftFont.deriveFont(Font.PLAIN, 18);
         Font minecraftTurnLabel = minecraftFont.deriveFont(Font.PLAIN, 50);
 
-        // Panel Player 1
+        // Panel Player
         playerInfoPanel = new JPanel(new FlowLayout());
         if (getCoordinateX() < FrameInfo.frameWidth/2){
             playerInfoPanel.setBounds(50, 75, 150, 200);

@@ -205,8 +205,8 @@ public class GamePlayGUI extends JFrame {
         Player player1 = getCharacterFromPreset(presetP1, player1Name);
         Player player2 = getCharacterFromPreset(presetP2, player2Name);
 
-        player1.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
-        player2.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
+        player1.setInitialPosition(FrameInfo.arenaXend - FrameInfo.tileSize ,FrameInfo.arenaYend - FrameInfo.tileSize);
+        player2.setInitialPosition(FrameInfo.arenaXstart,FrameInfo.arenaYstart);
 
         backgroundLabel.add(player1.character);
         backgroundLabel.add(player2.character);
