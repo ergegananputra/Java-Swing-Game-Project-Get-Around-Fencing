@@ -1,6 +1,7 @@
 package GUI;
 
 import information.FrameInfo;
+import information.GameInfo;
 import models.Player;
 
 import javax.swing.*;
@@ -54,6 +55,9 @@ public class GameEndGUI extends JFrame {
         playerIcon.setBounds(-6,25, FrameInfo.frameWidth, FrameInfo.frameHeight);
         backgroundLabel.add(playerIcon);
 
+        // add music
+        GameInfo.setBackgroundMusic(0, 0.8f);
+
         // Add Key Listener
         addKeyListener(new KeyListener() {
             @Override
@@ -66,6 +70,7 @@ public class GameEndGUI extends JFrame {
                 int keyCode = e.getKeyCode();
                 if (keyCode == KeyEvent.VK_ENTER) {
                     dispose();
+                    GameInfo.stopBackgroundMusic();
                     new HomePageMenuGUI(FrameInfo.getUserScreenSetting(), debugMode);
                 }
             }

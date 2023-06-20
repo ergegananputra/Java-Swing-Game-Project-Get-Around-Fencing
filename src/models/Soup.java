@@ -13,6 +13,8 @@ public class Soup extends Coordinate{
     public static final String OUTFIT = "src/assets/soups/soup_"+ FrameInfo.tileSize +".png";
     public final JLabel soup;
 
+    private final GameSound sounds;
+
 
 
     // CONSTRUCTORS
@@ -24,6 +26,9 @@ public class Soup extends Coordinate{
         soup.setBounds(x, y, FrameInfo.tileSize, FrameInfo.tileSize);
         setCoordinateX(x);
         setCoordinateY(y);
+
+        sounds = new GameSound();
+        sounds.setEatSfx();
     }
 
 
@@ -63,5 +68,9 @@ public class Soup extends Coordinate{
     // is on soup
     public boolean isOnSoup(int x, int y) {
         return super.getCoordinateX() == x && super.getCoordinateY() == y;
+    }
+
+    void playSound(){
+        sounds.playEatSfx();
     }
 }

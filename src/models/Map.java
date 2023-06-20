@@ -128,11 +128,13 @@ public abstract class Map {
 
     public void checkStepForSoup(Player player){
         if(isSoup(player.getCoordinateX(), player.getCoordinateY())){
-            player.setDefault_turns(
-                    getSoupFromCoordinate(
-                            player.getCoordinateX(),
-                            player.getCoordinateY()
-                    ).getEffect());
+            Soup theSoup = getSoupFromCoordinate(
+                    player.getCoordinateX(),
+                    player.getCoordinateY()
+            );
+            player.setDefault_turns(theSoup.getEffect());
+            theSoup.playSound();
+
         }
     }
 

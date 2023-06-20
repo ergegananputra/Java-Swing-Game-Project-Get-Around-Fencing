@@ -2,6 +2,7 @@ package GUI;
 
 import core.Engine;
 import information.FrameInfo;
+import information.GameInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,6 +81,10 @@ public class HomePageMenuGUI extends JFrame {
         actionLabel.setBounds(-10, -230, FrameInfo.frameWidth, FrameInfo.frameHeight);
         actionLabel.setHorizontalAlignment(SwingConstants.CENTER);
         backgroundLabel.add(actionLabel);
+
+        // add music background
+        GameInfo.setBackgroundMusic(0, 0.8f);
+
         
         addKeyListener(new KeyListener() {
             @Override
@@ -119,6 +124,7 @@ public class HomePageMenuGUI extends JFrame {
                                 }
                             }
                         }
+                        GameInfo.stopBackgroundMusic();
                         Engine.gamePlayGUI = new GamePlayGUI(preset, debugMode, player1Character, player2Character, player1Name, player2Name);
                     }
                     case KeyEvent.VK_W -> select1Pos = -370;

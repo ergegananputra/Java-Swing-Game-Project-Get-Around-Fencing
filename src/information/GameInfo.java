@@ -17,7 +17,11 @@ public class GameInfo {
     }
 
     public static void setBackgroundMusic(){
-        SoundInfo.setBackgroundMusic(0.5f);
+        SoundInfo.setBackgroundMusic(1, 0.25f);
+    }
+
+    public static void setBackgroundMusic(int select, float volume){
+        SoundInfo.setBackgroundMusic(select, volume);
     }
 
     public static void playBackgroundMusic(){

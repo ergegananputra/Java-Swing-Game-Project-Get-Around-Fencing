@@ -5,31 +5,19 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class SoundInfo {
-    private Clip[] footSteps;
+
     private static Clip backgroundMusic;
+    private static String[] musicLibrary = {"/assets/sounds/BeneathTheMoonlightSounds.wav", "/assets/sounds/PigStepFromMojang.wav"};
 
     public SoundInfo() {
-        setFootSteps();
+
     }
 
-    private void setFootSteps() {
-        footSteps = new Clip[2];
-        for (int i = 0; i < footSteps.length; i++) {
-            try {
-                int id = i + 1;
-                String filePath = "/assets/sounds/footstep_" + id + ".wav";
-                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(Objects.requireNonNull(SoundInfo.class.getResource(filePath)));
-                footSteps[i] = AudioSystem.getClip();
-                footSteps[i].open(audioInputStream);
-            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
-    static void setBackgroundMusic(float volume) {
+
+    static void setBackgroundMusic(int select, float volume) {
         try {
-            String filePath = "/assets/sounds/PigStepFromMojang.wav";
+            String filePath = musicLibrary[select];
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(Objects.requireNonNull(SoundInfo.class.getResource(filePath)));
             backgroundMusic = AudioSystem.getClip();
             backgroundMusic.open(audioInputStream);
@@ -51,17 +39,7 @@ public class SoundInfo {
 
 
 
-    public void playRandomFootstep() {
-        int randomIndex = (int) (Math.random() * footSteps.length);
-        Clip newClip = footSteps[randomIndex];
 
-        if (newClip.isRunning()) {
-            newClip.stop();
-        }
-
-        newClip.setFramePosition(0);
-        newClip.start();
-    }
 
     void playBackgroundMusic() {
         if (!backgroundMusic.isRunning()) {

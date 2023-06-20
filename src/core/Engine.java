@@ -143,7 +143,7 @@ public class Engine {
 
     // Generate Random Wither Rose
     private void generateRandomWitherRose(){
-        if (GameInfo.moves > 50 && GameInfo.moves % 2 == 1){
+        if (GameInfo.moves > 25 && GameInfo.moves % 2 == 1){
             map.generateRandomWitherRoses();
         }
     }
