@@ -44,11 +44,11 @@ public class SoundInfo {
             }
 
             backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
-            backgroundMusic.stop();
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
     }
+
 
 
     public void playRandomFootstep() {
