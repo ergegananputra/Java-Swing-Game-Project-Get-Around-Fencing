@@ -5,7 +5,6 @@ import GUI.GamePlayGUI;
 import information.FrameInfo;
 import information.GameInfo;
 import models.Map;
-import models.Map1;
 import models.Player;
 import java.util.logging.Logger;
 
@@ -99,27 +98,14 @@ public class Engine {
             GameInfo.stopBackgroundMusic();
 
             if (nowPlaying == 1){
-                // TODO : ini nanti dimasukkan ke start
-                Engine newCore = new Engine();
-                Map newMap1 = new Map1("New Game");
-                newCore.setMap(newMap1);
-                GameInfo.restart(newCore);
-
                 Engine.gamePlayGUI.dispose();
                 new GameEndGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode, map.player1);
-
 
                 if (GamePlayGUI.debugMode){
                     LOGGER.info(map.player1.getName() + " Win !");
                 }
                 GamePlayGUI.backgroundLabel.remove(getPlayer2().character);
             } else {
-                // TODO : ini nanti dimasukkan ke start
-                Engine newCore = new Engine();
-                Map newMap1 = new Map1("New Game");
-                newCore.setMap(newMap1);
-                GameInfo.restart(newCore);
-
                 Engine.gamePlayGUI.dispose();
                 new GameEndGUI(FrameInfo.getUserScreenSetting(), GamePlayGUI.debugMode, map.player2);
 

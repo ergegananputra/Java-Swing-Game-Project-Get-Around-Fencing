@@ -1,7 +1,10 @@
 package GUI;
 
+import core.Engine;
 import information.FrameInfo;
 import information.GameInfo;
+import models.Map;
+import models.Map1;
 import models.Player;
 
 import javax.swing.*;
@@ -69,6 +72,11 @@ public class GameEndGUI extends JFrame {
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
                 if (keyCode == KeyEvent.VK_ENTER) {
+                    Engine newCore = new Engine();
+                    Map newMap1 = new Map1("New Game");
+                    newCore.setMap(newMap1);
+                    GameInfo.restart(newCore);
+
                     dispose();
                     GameInfo.stopBackgroundMusic();
                     new HomePageMenuGUI(FrameInfo.getUserScreenSetting(), debugMode);
