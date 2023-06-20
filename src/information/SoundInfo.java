@@ -9,10 +9,6 @@ public class SoundInfo {
     private static Clip backgroundMusic;
     private static String[] musicLibrary = {"/assets/sounds/BeneathTheMoonlightSounds.wav", "/assets/sounds/PigStepFromMojang.wav"};
 
-    public SoundInfo() {
-
-    }
-
 
 
     static void setBackgroundMusic(int select, float volume) {
