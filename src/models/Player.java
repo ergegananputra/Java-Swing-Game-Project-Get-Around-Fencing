@@ -1,6 +1,7 @@
 package models;
 import GUI.GamePlayGUI;
 import information.FrameInfo;
+import information.SoundInfo;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,7 @@ public abstract class Player extends Coordinate implements IMoveable{
     public JPanel playerInfoPanel;
     public JLabel turnLabel;
     private final JLabel icon;
+    protected final SoundInfo sounds;
 
 
 
@@ -23,6 +25,7 @@ public abstract class Player extends Coordinate implements IMoveable{
     public Player(String outfit){
         this.character = new JLabel(new ImageIcon(outfit));
         this.icon = new JLabel(new ImageIcon(outfit));
+        this.sounds = new SoundInfo();
     }
 
 

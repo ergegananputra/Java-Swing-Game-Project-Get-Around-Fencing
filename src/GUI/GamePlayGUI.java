@@ -2,7 +2,6 @@ package GUI;
 import core.Engine;
 import information.FrameInfo;
 import information.GameInfo;
-import information.SoundInfo;
 import models.*;
 
 import javax.swing.*;
@@ -75,7 +74,8 @@ public class GamePlayGUI extends JFrame {
 
         GameInfo.core = new Engine();
         GameInfo.core.setMap(map);
-        SoundInfo.setFootSteps();
+        GameInfo.setBackgroundMusic();
+        GameInfo.playBackgroundMusic();
 
 
         // Add Event Listener

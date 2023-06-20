@@ -1,20 +1,19 @@
 package information;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 import java.io.IOException;
 import java.util.Objects;
-import java.util.Random;
 
 public class SoundInfo {
-    public static final Clip[] footSteps = new Clip[2];
-    private static final Random random = new Random();
+    private Clip[] footSteps;
+    private static Clip backgroundMusic;
 
-    public static void setFootSteps() {
-        // Load audio files and create Clip objects
+    public SoundInfo() {
+        setFootSteps();
+    }
+
+    private void setFootSteps() {
+        footSteps = new Clip[2];
         for (int i = 0; i < footSteps.length; i++) {
             try {
                 int id = i + 1;
@@ -28,9 +27,41 @@ public class SoundInfo {
         }
     }
 
-    public static void playRandomFootstep() {
-        int randomIndex = random.nextInt(footSteps.length);
-        footSteps[randomIndex].setFramePosition(0);
-        footSteps[randomIndex].start();
+    static void setBackgroundMusic() {
+        try {
+            String filePath = "/assets/sounds/PigStepFromMojang.wav";
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(Objects.requireNonNull(SoundInfo.class.getResource(filePath)));
+            backgroundMusic = AudioSystem.getClip();
+            backgroundMusic.open(audioInputStream);
+            backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
+            backgroundMusic.stop();
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void playRandomFootstep() {
+        int randomIndex = (int) (Math.random() * footSteps.length);
+        Clip newClip = footSteps[randomIndex];
+
+        if (newClip.isRunning()) {
+            newClip.stop();
+        }
+
+        newClip.setFramePosition(0);
+        newClip.start();
+    }
+
+    void playBackgroundMusic() {
+        if (!backgroundMusic.isRunning()) {
+            backgroundMusic.setFramePosition(0);
+            backgroundMusic.start();
+        }
+    }
+
+    void stopBackgroundMusic() {
+        if (backgroundMusic.isRunning()) {
+            backgroundMusic.stop();
+        }
     }
 }
