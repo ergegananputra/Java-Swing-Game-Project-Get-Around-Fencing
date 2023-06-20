@@ -96,8 +96,8 @@ public class Engine {
                 && getPlayer1().getCoordinateY() == getPlayer2().getCoordinateY()
                 || map.getSomeOneStepWitherRose()){
             GameInfo.isGameEnd = true;
+            GameInfo.stopBackgroundMusic();
 
-            // TODO: Delete sout if GUI already implemented!
             if (nowPlaying == 1){
                 // TODO : ini nanti dimasukkan ke start
                 Engine newCore = new Engine();
