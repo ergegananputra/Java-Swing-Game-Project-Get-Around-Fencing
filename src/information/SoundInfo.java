@@ -27,18 +27,29 @@ public class SoundInfo {
         }
     }
 
-    static void setBackgroundMusic() {
+    static void setBackgroundMusic(float volume) {
         try {
             String filePath = "/assets/sounds/PigStepFromMojang.wav";
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(Objects.requireNonNull(SoundInfo.class.getResource(filePath)));
             backgroundMusic = AudioSystem.getClip();
             backgroundMusic.open(audioInputStream);
+
+            // Adjust the volume if supported
+            if (backgroundMusic.isControlSupported(FloatControl.Type.MASTER_GAIN)) {
+                FloatControl volumeControl = (FloatControl) backgroundMusic.getControl(FloatControl.Type.MASTER_GAIN);
+
+                // Calculate the volume gain in decibels (dB)
+                float gain = (float) (Math.log10(volume) * 20);
+                volumeControl.setValue(gain);
+            }
+
             backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
             backgroundMusic.stop();
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
     }
+
 
     public void playRandomFootstep() {
         int randomIndex = (int) (Math.random() * footSteps.length);
@@ -64,4 +75,6 @@ public class SoundInfo {
             backgroundMusic.stop();
         }
     }
+
+
 }

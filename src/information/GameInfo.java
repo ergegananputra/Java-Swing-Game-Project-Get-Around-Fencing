@@ -17,7 +17,7 @@ public class GameInfo {
     }
 
     public static void setBackgroundMusic(){
-        SoundInfo.setBackgroundMusic();
+        SoundInfo.setBackgroundMusic(0.5f);
     }
 
     public static void playBackgroundMusic(){
@@ -27,5 +27,6 @@ public class GameInfo {
     public static void stopBackgroundMusic(){
         gameSound.stopBackgroundMusic();
     }
+
 
 }

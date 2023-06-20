@@ -74,9 +74,9 @@ public class GamePlayGUI extends JFrame {
 
         GameInfo.core = new Engine();
         GameInfo.core.setMap(map);
+
         GameInfo.setBackgroundMusic();
         GameInfo.playBackgroundMusic();
-
 
         // Add Event Listener
         addKeyListener(new KeyListener() {
