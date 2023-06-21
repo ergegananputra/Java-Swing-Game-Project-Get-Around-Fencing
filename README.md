@@ -10,7 +10,7 @@ Kelas PLB1
 
 ## Deskripsi Karya
 ### - Judul       : Lousy Fencing
-### - Tipe        : Game
+### - Tipe        : Game (Strategi)
 ### - Kontributor :
   - Adiel Boanerge G
   - Dwi Agung F
@@ -35,3 +35,5 @@ Ketiga item ini dapat digunakan sebagai strategi untuk memenangkan permainan.
 ## Diagram
 ![Lousy Fencing-Full drawio](https://github.com/ergegananputra/Java-Swing-Game-Project-Lousy-Fencing/assets/126530940/5c06855f-1e62-4b19-a68c-5654ba7be037)
 
+## Preview
+[Demo Video Lousy Fencing.mp4](Demo%20Video%20Lousy%20Fencing.mp4)
