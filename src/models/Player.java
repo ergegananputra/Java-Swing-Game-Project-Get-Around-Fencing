@@ -1,7 +1,6 @@
 package models;
 import GUI.GamePlayGUI;
 import information.FrameInfo;
-import information.SoundInfo;
 
 import javax.swing.*;
 import java.awt.*;

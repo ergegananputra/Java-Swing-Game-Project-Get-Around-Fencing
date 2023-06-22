@@ -3,7 +3,7 @@ package models;
 import information.FrameInfo;
 import information.GameInfo;
 
-public class PlayerPhysic extends  Player implements IMoveable{
+public class PlayerPhysic extends  Player{
 
     // CONSTRUCTOR
     public PlayerPhysic(String outfit) {
